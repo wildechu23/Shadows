@@ -1,5 +1,5 @@
 # Shadows
-Team Name: *Cries in Java*
+Team Name: \*Cries in Java\*
 
 Members: Wilde Chu & Joshua Kloepfer
 
