@@ -7,4 +7,12 @@ Description: Our project will be a dungeon style game, similar to the Binding of
 
 [Prototype](https://docs.google.com/document/d/1um9NYU4VOosW5PTzd0VpSnWpZxrdpRQoRMOCysq01pk/edit?usp=sharing)
 
-Development log(Joshua): 5/24 - Created basic Bow sprite 5/25 - created Necromancer sprite
+
+**Development log:**
+
+5/24:
+- Created basic Bow sprite(Joshua)
+
+5/25:
+- Created Necromancer sprite(Joshua)
+- Outlined basic classes like Shadows, Game, Floor, Room(Wilde)
