@@ -1,3 +1,4 @@
+Game game;
 Player player;
 boolean w;
 boolean a;
@@ -7,44 +8,25 @@ void setup() {
   size(1000,800);
   background(0);
   player = new Player();
+  game = new Game();
 }
 
 void draw() {
-  //Game game = new Game();
-  
-  //while(game.running()) {
-  //  game.update();
-  //  game.draw();
-  //}
+  game.update();
   background(0);
-  player.makePlayer();
-  player.move(w, a, s, d);
+  game.draw();
 }
+
 void keyPressed() {
-  if (key == 'w') {
-    w = true;
-  }
-  if (key == 'a') {
-    a = true;
-  }
-  if (key == 's') {
-    s = true;
-  }
-  if (key == 'd') {
-    d = true;
-  }  
+  game.player.pressed((key == 'w' || key == 'W'), (key == 'a' || key == 'A'),
+                 (key == 's' || key == 'S'), (key == 'd' || key == 'D'));
 }
+
 void keyReleased() {
-  if (key == 'w') {
-    w = false;
-  }
-  if (key == 'a') {
-    a = false;
-  }
-  if (key == 's') {
-    s = false;
-  }
-  if (key == 'd') {
-    d = false;
-  }
+  game.player.released((key == 'w' || key == 'W'), (key == 'a' || key == 'A'),
+                 (key == 's' || key == 'S'), (key == 'd' || key == 'D'));
+}
+
+void mousePressed() {
+  game.click(mouseButton == LEFT);
 }

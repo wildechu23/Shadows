@@ -1,5 +1,5 @@
 public class Player {
-  private int hearts, shields, dashCooldown, x, y, speed;
+  private int hearts, shields, dashCooldown, x, y, dx, dy, speed;
   private Weapon primaryWeapon, secondaryWeapon;
   private PowerUp currentPower;
   private boolean isPowerActive;
@@ -9,6 +9,8 @@ public class Player {
     speed = 5;
     x = 500;
     y = 400;
+    dx = 0;
+    dy = 0;
   }
   public void setSpeed(int newSpeed) {
     speed = newSpeed;
@@ -16,37 +18,34 @@ public class Player {
   public int getSpeed() {
     return speed;
   }
-  public void move(boolean w, boolean a, boolean s, boolean d) {
-  if (w == true && a == true) {
-    x -= speed;
-    y -= speed;
+  
+  public void move() {
+    x += dx * speed; 
+    y += dy * speed;
   }
-  else if (w == true && d == true) {
-    x += speed;
-    y -= speed;
+  
+  public void pressed(boolean w, boolean a, boolean s, boolean d) { 
+    if (a) dx = -1;
+    if (d) dx = 1;
+    if (w) dy = -1;
+    if (s) dy = 1;
   }
-  else if (s == true && a == true) {
-    x -= speed;
-    y += speed;
+  public void released(boolean w, boolean a, boolean s, boolean d) { 
+    if (a) dx = 0;
+    if (d) dx = 0;
+    if (w) dy = 0;
+    if (s) dy = 0;
   }
-  else if (s == true && d == true) {
-    x += speed;
-    y += speed;
-  }
-  else if (w == true) {
-    y -= speed;
-  }
-  else if (d == true) {
-    x += speed;
-  }
-  else if (a == true) {
-    x -= speed;
-  }
-  else if (s == true) {
-    y += speed;
-  }
-  }
-  public void makePlayer() {
+  
+  public void draw() {
     image(sprite, x, y);
+  }
+  
+  public int getX() {
+    return x;
+  }
+  
+  public int getY() {
+    return y;
   }
 }
