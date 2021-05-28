@@ -7,7 +7,6 @@ boolean d;
 void setup() {
   size(1920,1080);
   background(0);
-  player = new Player();
   game = new Game();
 }
 
