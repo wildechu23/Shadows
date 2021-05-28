@@ -18,4 +18,5 @@ Description: Our project will be a dungeon style game, similar to the Binding of
 - Outlined basic classes like Shadows, Game, Floor, Room(Wilde)
 
 5/27:
-- coded player movement(Joshua)
+- Coded player movement(Joshua & Wilde)
+- Added Projectile and implementation of the Shuriken subclass(Joshua & Wilde)
