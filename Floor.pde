@@ -13,6 +13,7 @@ public class Floor {
   
   public void roomGeneration() {
     //for now, just manually add some rooms
+    roomArray[3][3] = new Room(0);
   }
   
   public void draw() {
@@ -20,6 +21,6 @@ public class Floor {
   }
   
   public void update() {
-    //cRoom.update();
+    cRoom.update();
   }
 }

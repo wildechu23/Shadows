@@ -5,7 +5,7 @@ boolean a;
 boolean s;
 boolean d;
 void setup() {
-  size(1000,800);
+  size(1920,1080);
   background(0);
   player = new Player();
   game = new Game();

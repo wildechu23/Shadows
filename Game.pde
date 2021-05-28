@@ -14,7 +14,7 @@ public class Game {
   public void draw() {
     //fill(255);
     //rect(50,50,100,100);
-    //floor.draw();
+    floor.draw();
     player.draw();
     for(Projectile proj : projectiles) {
       proj.draw(); 
@@ -40,7 +40,7 @@ public class Game {
   public void click(boolean mouseLeft) {
     if(mouseLeft) {
       projectiles.add(new Shuriken(player));
-      print(projectiles.size());
+      //print(projectiles.size());
     }
   }
 }
