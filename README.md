@@ -16,5 +16,6 @@ Description: Our project will be a dungeon style game, similar to the Binding of
 5/25:
 - Created Necromancer sprite(Joshua)
 - Outlined basic classes like Shadows, Game, Floor, Room(Wilde)
+
 5/27:
 - coded player movement(Joshua)
