@@ -20,3 +20,6 @@ Description: Our project will be a dungeon style game, similar to the Binding of
 5/27:
 - Coded player movement(Joshua & Wilde)
 - Added Projectile and implementation of the Shuriken subclass(Joshua & Wilde)
+
+5/28:
+- Rooms are now loaded from rooms.txt, and different initialization number gives a different layout(Wilde)
