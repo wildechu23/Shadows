@@ -21,6 +21,6 @@ public class Floor {
   }
   
   public void update() {
-    cRoom.update();
+    //cRoom.update();
   }
 }

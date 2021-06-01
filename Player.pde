@@ -4,13 +4,16 @@ public class Player {
   private PowerUp currentPower;
   private boolean isPowerActive;
   private PImage sprite;
+  public boolean isAlive;
   public Player() {
     sprite = loadImage("Necromancer.png");
-    speed = 5;
+    speed = 8;
     x = 500;
     y = 400;
     dx = 0;
     dy = 0;
+    isAlive = true;
+    hearts = 10;
   }
   public void setSpeed(int newSpeed) {
     speed = newSpeed;
@@ -47,5 +50,14 @@ public class Player {
   
   public int getY() {
     return y;
+  }
+  public void setHearts(int newHeart) {
+    hearts = newHeart;
+    if (hearts <= 0) {
+      isAlive = false;
+    }
+  }
+  public int getHearts() {
+    return hearts;
   }
 }

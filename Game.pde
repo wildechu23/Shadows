@@ -1,5 +1,5 @@
 public class Game {
-  private boolean isRunning;
+  public boolean isRunning;
   private Floor floor;
   public Player player;
   public Enemy enemy;
@@ -9,7 +9,7 @@ public class Game {
     isRunning = true;
     floor = new Floor();
     player = new Player();
-    enemy = new Enemy();
+    enemy = new Bat();
     projectiles = new ArrayList<Projectile>();
   }
   
@@ -24,10 +24,13 @@ public class Game {
     }
   }
   
-  public void update() {
+  public void update() {;
+   if (player.isAlive == false) {
+      isRunning = false;
+    }
     floor.update();
     player.move();
-    enemy.move();
+    enemy.move(player);
     for(int i = 0; i < projectiles.size(); i++) {
       Projectile proj = projectiles.get(i);
       proj.update();

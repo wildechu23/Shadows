@@ -11,9 +11,11 @@ void setup() {
 }
 
 void draw() {
-  game.update();
-  background(0);
-  game.draw();
+  if (game.isRunning) {
+    game.update();
+    background(0);
+    game.draw();
+  }
 }
 
 void keyPressed() {
