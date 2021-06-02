@@ -23,3 +23,8 @@ Description: Our project will be a dungeon style game, similar to the Binding of
 
 5/28:
 - Rooms are now loaded from rooms.txt, and different initialization number gives a different layout(Wilde)
+
+6/1:
+- A melee enemy called bat now exists(Joshua)
+- It is unaffected by obstacles and goes at the player until it can strike(Joshua)
+- The bat can kill the player ending the game and the player can kill the bat making the bat disappear(Joshua)
