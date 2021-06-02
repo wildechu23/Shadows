@@ -30,5 +30,5 @@ public abstract class Projectile {
     return y;
   }
   
-  public abstract boolean isColliding();
+  public abstract boolean isColliding(Character character);
 }

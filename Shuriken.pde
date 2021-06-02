@@ -4,7 +4,11 @@ public class Shuriken extends Projectile {
     sprite = loadImage("Necromancer.png");
   }
   
-  public boolean isColliding() {
+  public boolean isColliding(Character character) {
+    if (x >= character.x && x <= character.x + 64 && y >= character.y && y <= character.y + 64) {
+      character.hearts -= 1;
+      return true;
+    }
     return false;
   }
 }

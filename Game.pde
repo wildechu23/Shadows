@@ -18,7 +18,9 @@ public class Game {
     //rect(50,50,100,100);
     floor.draw();
     player.draw();
-    enemy.draw();
+    if (enemy != null) {
+      enemy.draw();
+    }
     for(Projectile proj : projectiles) {
       proj.draw(); 
     }
@@ -30,13 +32,25 @@ public class Game {
     }
     floor.update();
     player.move();
-    enemy.move(player);
+    if (enemy != null && enemy.isAlive == false) {
+      enemy = null;
+    }
+    if (enemy != null) {
+      enemy.move(player);
+      enemy.update();
+    }
     for(int i = 0; i < projectiles.size(); i++) {
       Projectile proj = projectiles.get(i);
       proj.update();
       if(proj.getX() < -100 || proj.getX() > width + 100 || proj.getY() < -100 || proj.getY() > height + 100) {
         projectiles.remove(i);
-      };
+      }
+      if (enemy != null && proj.isColliding(enemy)) {
+        projectiles.remove(i);
+      }
+    }
+    if(enemy != null && !enemy.isAlive) {
+      enemy = null;
     }
   }
   

@@ -1,5 +1,5 @@
-public class Player {
-  private int hearts, shields, dashCooldown, x, y, dx, dy, speed;
+public class Player extends Character{
+  private int shields, dashCooldown, dx, dy, speed;
   private Weapon primaryWeapon, secondaryWeapon;
   private PowerUp currentPower;
   private boolean isPowerActive;
