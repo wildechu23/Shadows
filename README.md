@@ -31,3 +31,4 @@ Description: Our project will be a dungeon style game, similar to the Binding of
 
 6/2:
 - Now working skeleton archer(Joshua)
+- Refactored all projectiles into one big array in Game, while still maintaining no friendly fire(Wilde)
