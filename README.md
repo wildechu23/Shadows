@@ -28,3 +28,6 @@ Description: Our project will be a dungeon style game, similar to the Binding of
 - A melee enemy called bat now exists(Joshua)
 - It is unaffected by obstacles and goes at the player until it can strike(Joshua)
 - The bat can kill the player ending the game and the player can kill the bat making the bat disappear(Joshua)
+
+6/2:
+- Now working skeleton archer(Joshua)
