@@ -3,16 +3,16 @@ public class Skeleton extends Enemy {
     super("Necromancer.png");
     attackCD = 5;
     time = System.currentTimeMillis() / 1000 - attackCD;
-    projectiles = new ArrayList<Projectile>();
     hearts = 5;
   }
   
   public void move(Player player) {
-    attack(player);
+    //attack(player);
   }
-  public void attack(Player player) {
+  public void attack(Player player, Game game) {
     if (System.currentTimeMillis() / 1000 - time >= attackCD) {
-      projectiles.add(new Shuriken(this, player));
+      game.projectiles.add(new Shuriken(this, player));
+      //println(game.projectiles);
       time = System.currentTimeMillis() / 1000;
     }
   }

@@ -29,13 +29,13 @@ public class Room {
   }
   
   public void update() {
-    for(int i = 0; i < tileArray.length; i++) {
-      for(int j = 0; j < tileArray[i].length; j++) {
-        print(tileArray[i][j]);
-      }
-      print("\n");
-    }
-    print("\n");
+    //for(int i = 0; i < tileArray.length; i++) {
+    //  for(int j = 0; j < tileArray[i].length; j++) {
+    //    print(tileArray[i][j]);
+    //  }
+    //  print("\n");
+    //}
+    //print("\n");
   }
   
   private int[][] loadTileArray(int roomNum) {

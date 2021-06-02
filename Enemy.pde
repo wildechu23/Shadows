@@ -1,4 +1,4 @@
-public class Enemy extends Character{
+public abstract class Enemy extends Character{
   public int speed, attackCD;
   long time;
   public ArrayList<Projectile> projectiles;
@@ -23,4 +23,5 @@ public class Enemy extends Character{
       isAlive = false;
     }
   }
+  public abstract void attack(Player player, Game game);
 }

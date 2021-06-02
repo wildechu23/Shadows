@@ -21,6 +21,14 @@ public abstract class Projectile {
     speed = 10;
   }
   
+  public Projectile(Enemy enemy, int targetX, int targetY) {
+    character = enemy;
+    x = character.x;
+    y = character.y;
+    angle = atan2(targetY - y, targetX - x);
+    speed = 10;
+  }
+  
   public void update() {
     x += cos(angle) * speed;
     y += sin(angle) * speed;
@@ -36,6 +44,10 @@ public abstract class Projectile {
   
   public int getY() {
     return y;
+  }
+  
+  public Character getCharacter() {
+    return character;
   }
   
   public abstract boolean isColliding(Character character);

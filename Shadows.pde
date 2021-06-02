@@ -1,11 +1,11 @@
-Game game;
-Player player;
+public Game game;
 boolean w;
 boolean a;
 boolean s;
 boolean d;
 void setup() {
   size(1920,1080);
+  frameRate(60);
   background(0);
   game = new Game();
 }
@@ -16,6 +16,7 @@ void draw() {
     background(0);
     game.draw();
   }
+  text(frameRate,width-20,20);
 }
 
 void keyPressed() {

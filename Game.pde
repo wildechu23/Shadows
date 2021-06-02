@@ -3,7 +3,7 @@ public class Game {
   private Floor floor;
   public Player player;
   public Enemy enemy;
-  private ArrayList<Projectile> projectiles;
+  public ArrayList<Projectile> projectiles;
   
   public Game() {
     isRunning = true;
@@ -20,12 +20,12 @@ public class Game {
     player.draw();
     if (enemy != null) {
       enemy.draw();
-      for (Projectile proj : enemy.projectiles) {
-        proj.draw();
-      }
+      //for (Projectile proj : enemy.projectiles) {
+      //  proj.draw();
+      //}
     }
     for(Projectile proj : projectiles) {
-      proj.draw(); 
+      proj.draw();
     }
   }
   
@@ -42,29 +42,32 @@ public class Game {
     if (enemy != null) {
       enemy.move(player);
       enemy.update();
+      enemy.attack(player, this);
     }
+    //println("Projectiles size: ", projectiles.size()); 
     for(int i = 0; i < projectiles.size(); i++) {
       Projectile proj = projectiles.get(i);
       proj.update();
       if(proj.getX() < -100 || proj.getX() > width + 100 || proj.getY() < -100 || proj.getY() > height + 100) {
         projectiles.remove(i);
       }
-      if (enemy != null && proj.isColliding(enemy)) {
+      //println(proj.getCharacter().getClass());
+      if (enemy != null && (proj.getCharacter() instanceof Player && proj.isColliding(enemy))) {
         projectiles.remove(i);
       }
     }
-    if (enemy != null) {
-      for(int i = 0; i < enemy.projectiles.size(); i++) {
-        Projectile proj = enemy.projectiles.get(i);
-        proj.update();
-        if(proj.getX() < -100 || proj.getX() > width + 100 || proj.getY() < -100 || proj.getY() > height + 100) {
-          enemy.projectiles.remove(i);
-        }
-        if (proj.isColliding(player)) {
-          enemy.projectiles.remove(i);
-        }
-      }
-    }
+    //if (enemy != null) {
+    //  for(int i = 0; i < enemy.projectiles.size(); i++) {
+    //    Projectile proj = enemy.projectiles.get(i);
+    //    proj.update();
+    //    if(proj.getX() < -100 || proj.getX() > width + 100 || proj.getY() < -100 || proj.getY() > height + 100) {
+    //      enemy.projectiles.remove(i);
+    //    }
+    //    if (proj.isColliding(player)) {
+    //      enemy.projectiles.remove(i);
+    //    }
+    //  }
+    //}
     if(enemy != null && !enemy.isAlive) {
       enemy = null;
     }
