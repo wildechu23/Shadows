@@ -2,14 +2,22 @@ public abstract class Projectile {
   public int damage, speed, range, x, y;
   public float angle;
   public PImage sprite;
-  private Player player;
+  private Character character;
   
   public Projectile(Player player) {
-    this.player = player;
-    x = player.getX();
-    y = player.getY();
+    this.character = player;
+    x = character.x;
+    y = character.y;
     angle = atan2(mouseY - y, mouseX - x);
     //print(angle);
+    speed = 10;
+  }
+  
+  public Projectile(Enemy enemy, Player player) {
+    character = enemy;
+    x = character.x;
+    y = character.y;
+    angle = atan2(player.y - y, player.x - x);
     speed = 10;
   }
   

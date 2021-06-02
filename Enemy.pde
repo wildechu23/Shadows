@@ -1,5 +1,7 @@
 public class Enemy extends Character{
-  public int speed;
+  public int speed, attackCD;
+  long time;
+  public ArrayList<Projectile> projectiles;
   private PImage sprite;
   boolean isAlive;
   public Enemy(String str) {

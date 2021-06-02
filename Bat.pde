@@ -1,6 +1,4 @@
 public class Bat extends Enemy {
-  int attackCD;
-  long time;
   public Bat() {
     super("Necromancer.png");
     attackCD = 5;
@@ -19,7 +17,7 @@ public class Bat extends Enemy {
   }
   public void attack(Player player) {
     if (System.currentTimeMillis() / 1000 - time >= attackCD) {
-      player.setHearts(player.getHearts() - 1);
+      player.hearts -= 1;
       System.out.println("HIT");
       time = System.currentTimeMillis() / 1000;
     }

@@ -26,7 +26,11 @@ public class Player extends Character{
     x += dx * speed; 
     y += dy * speed;
   }
-  
+  public void update() {
+    if (hearts <= 0) {
+      isAlive = false;
+    }
+  }
   public void pressed(boolean w, boolean a, boolean s, boolean d) { 
     if (a) dx = -1;
     if (d) dx = 1;
@@ -50,12 +54,6 @@ public class Player extends Character{
   
   public int getY() {
     return y;
-  }
-  public void setHearts(int newHeart) {
-    hearts = newHeart;
-    if (hearts <= 0) {
-      isAlive = false;
-    }
   }
   public int getHearts() {
     return hearts;

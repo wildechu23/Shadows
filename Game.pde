@@ -9,7 +9,7 @@ public class Game {
     isRunning = true;
     floor = new Floor();
     player = new Player();
-    enemy = new Bat();
+    enemy = new Skeleton();
     projectiles = new ArrayList<Projectile>();
   }
   
@@ -20,16 +20,20 @@ public class Game {
     player.draw();
     if (enemy != null) {
       enemy.draw();
+      for (Projectile proj : enemy.projectiles) {
+        proj.draw();
+      }
     }
     for(Projectile proj : projectiles) {
       proj.draw(); 
     }
   }
   
-  public void update() {;
+  public void update() {
    if (player.isAlive == false) {
       isRunning = false;
     }
+    player.update();
     floor.update();
     player.move();
     if (enemy != null && enemy.isAlive == false) {
@@ -47,6 +51,18 @@ public class Game {
       }
       if (enemy != null && proj.isColliding(enemy)) {
         projectiles.remove(i);
+      }
+    }
+    if (enemy != null) {
+      for(int i = 0; i < enemy.projectiles.size(); i++) {
+        Projectile proj = enemy.projectiles.get(i);
+        proj.update();
+        if(proj.getX() < -100 || proj.getX() > width + 100 || proj.getY() < -100 || proj.getY() > height + 100) {
+          enemy.projectiles.remove(i);
+        }
+        if (proj.isColliding(player)) {
+          enemy.projectiles.remove(i);
+        }
       }
     }
     if(enemy != null && !enemy.isAlive) {
