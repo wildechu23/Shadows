@@ -2,15 +2,16 @@ public class Game {
   public boolean isRunning;
   private Floor floor;
   public Player player;
-  public Enemy enemy;
+  public ArrayList<Enemy> enemies;
   public ArrayList<Projectile> projectiles;
   
   public Game() {
     isRunning = true;
     floor = new Floor();
     player = new Player();
-    enemy = new Skeleton();
+    enemies = new ArrayList<Enemy>();
     projectiles = new ArrayList<Projectile>();
+    enemies.add(new Necromancer());
   }
   
   public void draw() {
@@ -18,11 +19,8 @@ public class Game {
     //rect(50,50,100,100);
     floor.draw();
     player.draw();
-    if (enemy != null) {
+    for (Enemy enemy : enemies) {
       enemy.draw();
-      //for (Projectile proj : enemy.projectiles) {
-      //  proj.draw();
-      //}
     }
     for(Projectile proj : projectiles) {
       proj.draw();
@@ -36,13 +34,13 @@ public class Game {
     player.update();
     floor.update();
     player.move();
-    if (enemy != null && enemy.isAlive == false) {
-      enemy = null;
-    }
-    if (enemy != null) {
-      enemy.move(player);
-      enemy.update();
-      enemy.attack(player, this);
+    for (int i = 0; i < enemies.size(); i++) {
+      if (enemies.get(i).isAlive == false) {
+        enemies.remove(i);
+        continue;
+      }
+      enemies.get(i).move(player, this);
+      enemies.get(i).update();
     }
     //println("Projectiles size: ", projectiles.size()); 
     for(int i = 0; i < projectiles.size(); i++) {
@@ -52,7 +50,13 @@ public class Game {
         projectiles.remove(i);
       }
       //println(proj.getCharacter().getClass());
-      if (enemy != null && (proj.getCharacter() instanceof Player && proj.isColliding(enemy))) {
+      for (Enemy enemy : enemies) {
+        if ((proj.getCharacter() instanceof Player && proj.isColliding(enemy))) {
+          projectiles.remove(i);
+          break;
+        }
+      }
+      if ((proj.getCharacter() instanceof Enemy && proj.isColliding(player))) {
         projectiles.remove(i);
       }
     }
@@ -68,9 +72,6 @@ public class Game {
     //    }
     //  }
     //}
-    if(enemy != null && !enemy.isAlive) {
-      enemy = null;
-    }
   }
   
   public boolean running() {

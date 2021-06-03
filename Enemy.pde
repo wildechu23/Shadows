@@ -12,8 +12,7 @@ public abstract class Enemy extends Character{
     isAlive = true;
     sprite = loadImage(str);
   }
-  public void move(Player player) {
-  }
+  public abstract void move(Player player, Game game);
   
   public void draw() {
     image(sprite, x, y);

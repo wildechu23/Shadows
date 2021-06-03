@@ -9,8 +9,8 @@ public class Shuriken extends Projectile {
   }
   
   public boolean isColliding(Character character) {
-    if (x >= character.x && x <= character.x + 64 && y >= character.y && y <= character.y + 64) {
-      character.hearts -= 1;
+    if ((x >= character.x && x <= character.x + 64 && y >= character.y && y <= character.y + 64) || (x + 64 >= character.x && x + 64 <= character.x + 64 && y + 64 >= character.y && y + 64 <= character.y + 64)) {
+      character.hearts -= damage;
       return true;
     }
     return false;

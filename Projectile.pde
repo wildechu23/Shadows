@@ -11,6 +11,7 @@ public abstract class Projectile {
     angle = atan2(mouseY - y, mouseX - x);
     //print(angle);
     speed = 10;
+    damage = 1;
   }
   
   public Projectile(Enemy enemy, Player player) {
@@ -19,6 +20,7 @@ public abstract class Projectile {
     y = character.y;
     angle = atan2(player.y - y, player.x - x);
     speed = 10;
+    damage = 1;
   }
   
   public Projectile(Enemy enemy, int targetX, int targetY) {
