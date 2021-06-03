@@ -49,13 +49,13 @@ public class Bat extends Enemy {
     }
   }
   public void draw() {
-    if (System.currentTimeMillis() - time2 >= 1500) {
+    if (System.currentTimeMillis() - time2 >= 750) {
       time2 = System.currentTimeMillis();
     }
-    else if (System.currentTimeMillis() - time2 >= 1000) {
+    else if (System.currentTimeMillis() - time2 >= 500) {
       image(animation[2], x, y);
     }
-    else if (System.currentTimeMillis() - time2 >= 500) {
+    else if (System.currentTimeMillis() - time2 >= 250) {
       image(animation[1], x, y);
     }
     else {
