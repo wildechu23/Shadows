@@ -11,7 +11,7 @@ public class Game {
     player = new Player();
     enemies = new ArrayList<Enemy>();
     projectiles = new ArrayList<Projectile>();
-    enemies.add(new Necromancer());
+    enemies.add(new Bat());
   }
   
   public void draw() {

@@ -1,8 +1,4 @@
 public Game game;
-boolean w;
-boolean a;
-boolean s;
-boolean d;
 void setup() {
   size(1920,1080);
   frameRate(60);
