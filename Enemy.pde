@@ -14,7 +14,7 @@ public abstract class Enemy extends Character{
   }
   public abstract void move(Player player, Game game);
   
-  public void draw() {
+  public void draw(Player player) {
     image(sprite, x, y);
   }
   public void update() {

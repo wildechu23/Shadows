@@ -1,5 +1,5 @@
 public class Bat extends Enemy {
-  long time2;
+  long time2, time3;
   private PImage[] animation;
   public Bat() {
     super("bat1.png");
@@ -7,13 +7,16 @@ public class Bat extends Enemy {
     time = System.currentTimeMillis() / 1000 - attackCD;
     hearts = 5;
     time2 = System.currentTimeMillis();
-    animation = new PImage[3];
+    time3 = System.currentTimeMillis() - 200;
+    animation = new PImage[5];
     animation[0] = loadImage("bat1.png");
     animation[1] = loadImage("bat2.png");
     animation[2] = loadImage("bat3.png");
-    animation[0].resize(64, 64);
-    animation[1].resize(64, 64);
-    animation[2].resize(64, 64);
+    animation[3] = loadImage("batAttack1.png");
+    animation[4] = loadImage("batAttack2.png");
+    animation[0].resize(64, 0);
+    animation[1].resize(64, 0);
+    animation[2].resize(64, 0);
   }
   public Bat(int x, int y) {
     super("bat1.png");
@@ -23,12 +26,16 @@ public class Bat extends Enemy {
     this.x = x;
     this.y = y;
     time2 = System.currentTimeMillis() / 1000;
+    time3 = System.currentTimeMillis() - 200;
+    animation = new PImage[5];
     animation[0] = loadImage("bat1.png");
     animation[1] = loadImage("bat2.png");
     animation[2] = loadImage("bat3.png");
-    animation[0].resize(64, 64);
-    animation[1].resize(64, 64);
-    animation[2].resize(64, 64);
+    animation[3] = loadImage("batAttack1.png");
+    animation[4] = loadImage("batAttack2.png");
+    animation[0].resize(64, 0);
+    animation[1].resize(64, 0);
+    animation[2].resize(64, 0);
   }
   
   public void move(Player player, Game game) {
@@ -44,11 +51,11 @@ public class Bat extends Enemy {
   public void attack(Player player, Game game) {
     if (System.currentTimeMillis() / 1000 - time >= attackCD) {
       player.hearts -= 1;
-      System.out.println("HIT");
+      time3 = System.currentTimeMillis();
       time = System.currentTimeMillis() / 1000;
     }
   }
-  public void draw() {
+  public void draw(Player player) {
     if (System.currentTimeMillis() - time2 >= 750) {
       time2 = System.currentTimeMillis();
     }
@@ -60,6 +67,19 @@ public class Bat extends Enemy {
     }
     else {
       image(animation[0], x, y);
+    }
+    if (System.currentTimeMillis() - time3 <= 100) {
+      player.tint = true;
+      float angle = atan2(player.y - y, player.x - x);
+      image(animation[3], x + 30 * cos(angle), y + 30 * sin(angle));
+    }
+    else if (System.currentTimeMillis() - time3 <= 200) {
+      float angle = atan2(player.y - y, player.x - x);
+      image (animation[4], x + 30 * cos(angle), y + 30 * sin(angle));
+    }
+    
+    else if (System.currentTimeMillis() - time3 >= 500){
+      player.tint = false;
     }
   }
 }

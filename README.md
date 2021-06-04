@@ -37,3 +37,4 @@ Description: Our project will be a dungeon style game, similar to the Binding of
 - Can now have multiple enemies(Joshua)
 - Necromancer is started and has the ability to summon enemies(Joshua)
 - Bat movement is now animated(Joshua)
+- Bat attack is now animated(Joshua)

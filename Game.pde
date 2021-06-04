@@ -20,7 +20,7 @@ public class Game {
     floor.draw();
     player.draw();
     for (Enemy enemy : enemies) {
-      enemy.draw();
+      enemy.draw(player);
     }
     for(Projectile proj : projectiles) {
       proj.draw();
