@@ -62,9 +62,6 @@ public class Game {
         projectiles.remove(i);
       }
     }
-    if (enemies.size() == 0) {
-      enemies.add(new Necromancer());
-    }
     //if (enemy != null) {
     //  for(int i = 0; i < enemy.projectiles.size(); i++) {
     //    Projectile proj = enemy.projectiles.get(i);
