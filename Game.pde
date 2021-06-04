@@ -12,6 +12,8 @@ public class Game {
     enemies = new ArrayList<Enemy>();
     projectiles = new ArrayList<Projectile>();
     enemies.add(new Necromancer());
+    enemies.get(0).x = 400;
+    enemies.get(0).y = 400;
   }
   
   public void draw() {
@@ -59,6 +61,9 @@ public class Game {
       if ((proj.getCharacter() instanceof Enemy && proj.isColliding(player))) {
         projectiles.remove(i);
       }
+    }
+    if (enemies.size() == 0) {
+      enemies.add(new Necromancer());
     }
     //if (enemy != null) {
     //  for(int i = 0; i < enemy.projectiles.size(); i++) {

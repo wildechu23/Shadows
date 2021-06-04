@@ -21,12 +21,14 @@ public class Necromancer extends Enemy{
   
   public void attack(Player player, Game game) {
     for (int i = 0; i < 3; i++) {
-      int type = round((float)((Math.random() * 1) + 1));
-      if (type == 1) {
-        game.enemies.add(new Skeleton((int)(Math.random() * (width - 64)), (int)(Math.random() * (height - 64))));
+      //int type = round((float)((Math.random() * 1) + 1));
+      //if (type == 1) {
+      //  game.enemies.add(new Skeleton((int)(Math.random() * (width - 64)), (int)(Math.random() * (height - 64))));
  
-      }
-      if (type == 2) {
+      //}
+      //if (type == 2) {
         game.enemies.add(new Bat((int)(Math.random() * (width - 64)), (int)(Math.random() * (height - 64))));
-      }}   }
+      //}
+    }   
+    }
 }

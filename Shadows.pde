@@ -3,32 +3,45 @@ void setup() {
   size(1664,896);
   frameRate(60);
   background(0);
-  game = new Game();
+  game = null;
 }
 
 void draw() {
-  if (game.isRunning) {
+  if (game != null && game.isRunning) {
     game.update();
     background(0);
     game.draw();
   }
   else {
     game = null;
-    game = new Game();
+  }
+  if (game == null) {
+    background(0, 0, 0);
+    fill(255, 255, 255);
+    rect(width / 2, height / 2, 90, 30);
+    fill(0, 0, 0);
+    text("start", width / 2, height / 2 + 25);
+    textSize(40);
   }
   text(frameRate,width-20,20);
 }
 
 void keyPressed() {
+  if (game != null)
   game.player.pressed((key == 'w' || key == 'W'), (key == 'a' || key == 'A'),
                  (key == 's' || key == 'S'), (key == 'd' || key == 'D'));
 }
 
 void keyReleased() {
+  if (game != null)
   game.player.released((key == 'w' || key == 'W'), (key == 'a' || key == 'A'),
                  (key == 's' || key == 'S'), (key == 'd' || key == 'D'));
 }
 
 void mousePressed() {
+  if (game != null)
   game.click(mouseButton == LEFT);
+  else if (mouseX >= width / 2 && mouseX <= width / 2 + 100 && mouseY >= height / 2 && mouseY <= height / 2 + 100) {
+    game = new Game();
+  }
 }
