@@ -1,14 +1,21 @@
 public class Necromancer extends Enemy{
+  long time3;
   public Necromancer() {
     super("Necromancer.png");
     attackCD = 10;
     time = System.currentTimeMillis() / 1000 - attackCD;
+    time3 = System.currentTimeMillis() / 1000;
     hearts = 10;
+    size = 64;
   }
   public void move(Player player, Game game) {
     if (System.currentTimeMillis() / 1000 - time >= attackCD) {
       attack(player, game);
       time = System.currentTimeMillis() / 1000;
+    }
+    else if (System.currentTimeMillis() / 1000 - time3 >= 2) {
+      game.projectiles.add(new fireball(this, player));
+      time3 = System.currentTimeMillis() / 1000;
     }
   }
   

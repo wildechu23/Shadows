@@ -16,10 +16,10 @@ public class Room {
         int tile = tileArray[i][j];
         switch(tile) {
           case 0:
-            image(ground, (j+1)*128, i*128);
+            image(ground, (j)*128, i*128);
             break;
           case 1:
-            image(rock, (j+1)*128, i*128);
+            image(rock, (j)*128, i*128);
             break;
           default:
             throw new RuntimeException("Does not recognize tile number");

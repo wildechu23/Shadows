@@ -4,6 +4,7 @@ public class Skeleton extends Enemy {
     attackCD = 5;
     time = System.currentTimeMillis() / 1000 - attackCD;
     hearts = 5;
+    size = 64;
   }
   public Skeleton(int x, int y) {
     super("Necromancer.png");
@@ -12,6 +13,7 @@ public class Skeleton extends Enemy {
     hearts = 5;
     this.x = x;
     this.y = y;
+    size = 64;
   }
   
   public void move(Player player, Game game) {

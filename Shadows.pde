@@ -1,6 +1,6 @@
 public Game game;
 void setup() {
-  size(1920,1080);
+  size(1664,896);
   frameRate(60);
   background(0);
   game = new Game();
@@ -11,6 +11,10 @@ void draw() {
     game.update();
     background(0);
     game.draw();
+  }
+  else {
+    game = null;
+    game = new Game();
   }
   text(frameRate,width-20,20);
 }

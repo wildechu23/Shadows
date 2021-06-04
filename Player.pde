@@ -1,12 +1,14 @@
 public class Player extends Character{
   private int shields, dashCooldown, dx, dy, speed;
-  private Weapon primaryWeapon, secondaryWeapon;
-  private PowerUp currentPower;
-  public boolean isPowerActive, tint;
+  int attackCD;
+  //private Weapon primaryWeapon, secondaryWeapon;
+  //private PowerUp currentPower;
+  public boolean isPowerActive;
   private PImage sprite;
   public boolean isAlive;
   public Player() {
-    sprite = loadImage("Necromancer.png");
+    sprite = loadImage("ninja.png");
+    sprite.resize(64, 0);
     speed = 8;
     x = 500;
     y = 400;
@@ -15,6 +17,10 @@ public class Player extends Character{
     isAlive = true;
     hearts = 10;
     tint = false;
+    attackCD = 1;
+    time = System.currentTimeMillis() / 1000 - 1;
+    time2 = System.currentTimeMillis();
+    size = 64;
   }
   public void setSpeed(int newSpeed) {
     speed = newSpeed;
@@ -46,8 +52,11 @@ public class Player extends Character{
   }
   
   public void draw() {
-    if (tint == true) {
+    if (tint == true && System.currentTimeMillis() - time2 <= 500) {
       tint(0, 153, 100, 100);
+    }
+    else {
+      tint = false;
     }
     image(sprite, x, y);
     noTint();

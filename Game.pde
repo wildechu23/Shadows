@@ -11,7 +11,7 @@ public class Game {
     player = new Player();
     enemies = new ArrayList<Enemy>();
     projectiles = new ArrayList<Projectile>();
-    enemies.add(new Bat());
+    enemies.add(new Necromancer());
   }
   
   public void draw() {
@@ -79,8 +79,9 @@ public class Game {
   }
   
   public void click(boolean mouseLeft) {
-    if(mouseLeft) {
+    if(mouseLeft && System.currentTimeMillis() / 1000 - player.time >= player.attackCD) {
       projectiles.add(new Shuriken(player));
+      player.time = System.currentTimeMillis() / 1000;
       //print(projectiles.size());
     }
   }

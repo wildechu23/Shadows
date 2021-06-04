@@ -1,6 +1,5 @@
 public abstract class Enemy extends Character{
   public int speed, attackCD;
-  long time;
   public ArrayList<Projectile> projectiles;
   private PImage sprite;
   boolean isAlive;
@@ -15,7 +14,14 @@ public abstract class Enemy extends Character{
   public abstract void move(Player player, Game game);
   
   public void draw(Player player) {
+    if (tint == true && System.currentTimeMillis() - time2 <= 500) {
+      tint(0, 153, 100, 100);
+    }
+    else {
+      tint = false;
+    }
     image(sprite, x, y);
+    noTint();
   }
   public void update() {
     if (hearts <= 0) {

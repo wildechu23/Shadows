@@ -1,5 +1,5 @@
 public class Bat extends Enemy {
-  long time2, time3;
+  long time3;
   private PImage[] animation;
   public Bat() {
     super("bat1.png");
@@ -17,6 +17,7 @@ public class Bat extends Enemy {
     animation[0].resize(64, 0);
     animation[1].resize(64, 0);
     animation[2].resize(64, 0);
+    size = 64;
   }
   public Bat(int x, int y) {
     super("bat1.png");
@@ -36,6 +37,7 @@ public class Bat extends Enemy {
     animation[0].resize(64, 0);
     animation[1].resize(64, 0);
     animation[2].resize(64, 0);
+    size = 64;
   }
   
   public void move(Player player, Game game) {
@@ -56,6 +58,12 @@ public class Bat extends Enemy {
     }
   }
   public void draw(Player player) {
+    if (tint == true && System.currentTimeMillis() - time2 <= 500) {
+      tint(0, 153, 100, 100);
+    }
+    else {
+      tint = false;
+    }
     if (System.currentTimeMillis() - time2 >= 750) {
       time2 = System.currentTimeMillis();
     }
@@ -70,6 +78,7 @@ public class Bat extends Enemy {
     }
     if (System.currentTimeMillis() - time3 <= 100) {
       player.tint = true;
+      player.time2 = System.currentTimeMillis();
       float angle = atan2(player.y - y, player.x - x);
       image(animation[3], x + 30 * cos(angle), y + 30 * sin(angle));
     }
@@ -77,9 +86,6 @@ public class Bat extends Enemy {
       float angle = atan2(player.y - y, player.x - x);
       image (animation[4], x + 30 * cos(angle), y + 30 * sin(angle));
     }
-    
-    else if (System.currentTimeMillis() - time3 >= 500){
-      player.tint = false;
-    }
+    noTint();
   }
 }
