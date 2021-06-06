@@ -8,6 +8,11 @@ Description: Our project will be a dungeon style game, similar to the Binding of
 [Prototype](https://docs.google.com/document/d/1um9NYU4VOosW5PTzd0VpSnWpZxrdpRQoRMOCysq01pk/edit?usp=sharing)
 
 
+**How to Run:**
+
+Open Shadows.pde and hit Run
+
+
 **Development log:**
 
 5/24:
