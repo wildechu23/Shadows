@@ -14,7 +14,7 @@ public class Necromancer extends Enemy{
       time = System.currentTimeMillis() / 1000;
     }
     else if (System.currentTimeMillis() / 1000 - time3 >= 2) {
-      game.projectiles.add(new fireball(this, player));
+      game.projectiles.add(new Fireball(this, player));
       time3 = System.currentTimeMillis() / 1000;
     }
   }

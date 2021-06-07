@@ -1,10 +1,10 @@
-public class fireball extends Projectile{
-  public fireball(Player player) {
+public class Fireball extends Projectile{
+  public Fireball(Player player) {
     super(player);
-    sprite = loadImage("Fdireball.png");
+    sprite = loadImage("Fireball.png");
     sprite.resize(64, 0);
   }
-  public fireball(Enemy enemy, Player player) {
+  public Fireball(Enemy enemy, Player player) {
     super(enemy, player);
     sprite = loadImage("Fireball.png");
     sprite.resize(64, 0);

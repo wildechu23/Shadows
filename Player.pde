@@ -1,14 +1,20 @@
 public class Player extends Character{
   private int shields, dashCooldown, dx, dy, speed;
-  int attackCD;
+  float attackCD;
   //private Weapon primaryWeapon, secondaryWeapon;
   //private PowerUp currentPower;
   public boolean isPowerActive;
-  private PImage sprite;
+  private PImage[] sprites;
+  private int spriteNum;
   public boolean isAlive;
   public Player() {
-    sprite = loadImage("ninja.png");
-    sprite.resize(64, 0);
+    sprites = new PImage[2];
+    sprite[0] = loadImage("ninja.png");
+    sprite[1] = loadImage("mirrorNinja.png");
+    for(PImage sprite : sprites) {
+      resize(sprite, 64, 0);
+    }
+    spriteNum = 0;
     speed = 8;
     x = 500;
     y = 400;
@@ -17,7 +23,7 @@ public class Player extends Character{
     isAlive = true;
     hearts = 10;
     tint = false;
-    attackCD = 1;
+    attackCD = 0.5;
     time = System.currentTimeMillis() / 1000 - 1;
     time2 = System.currentTimeMillis();
     size = 64;
@@ -39,8 +45,14 @@ public class Player extends Character{
     }
   }
   public void pressed(boolean w, boolean a, boolean s, boolean d) { 
-    if (a) dx = -1;
-    if (d) dx = 1;
+    if (a) {
+      dx = -1;
+      spriteNum = 0;
+    }
+    if (d) {
+      dx = 1;
+      spriteNum = 1;
+    }
     if (w) dy = -1;
     if (s) dy = 1;
   }
@@ -58,7 +70,7 @@ public class Player extends Character{
     else {
       tint = false;
     }
-    image(sprite, x, y);
+    image(sprite[spriteNum], x, y);
     noTint();
   }
   
