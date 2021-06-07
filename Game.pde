@@ -1,6 +1,7 @@
 public class Game {
   public boolean isRunning;
   private Floor floor;
+  private UI ui;
   public Player player;
   public ArrayList<Enemy> enemies;
   public ArrayList<Projectile> projectiles;
@@ -8,6 +9,7 @@ public class Game {
   public Game() {
     isRunning = true;
     floor = new Floor();
+    ui = new UI();
     player = new Player();
     enemies = new ArrayList<Enemy>();
     projectiles = new ArrayList<Projectile>();
@@ -27,6 +29,7 @@ public class Game {
     for(Projectile proj : projectiles) {
       proj.draw();
     }
+    ui.draw();
   }
   
   public void update() {
@@ -62,6 +65,7 @@ public class Game {
         projectiles.remove(i);
       }
     }
+    ui.update(player);
     //if (enemy != null) {
     //  for(int i = 0; i < enemy.projectiles.size(); i++) {
     //    Projectile proj = enemy.projectiles.get(i);

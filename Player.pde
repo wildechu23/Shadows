@@ -9,10 +9,10 @@ public class Player extends Character{
   public boolean isAlive;
   public Player() {
     sprites = new PImage[2];
-    sprite[0] = loadImage("ninja.png");
-    sprite[1] = loadImage("mirrorNinja.png");
+    sprites[0] = loadImage("ninja.png");
+    sprites[1] = loadImage("mirrorNinja.png");
     for(PImage sprite : sprites) {
-      resize(sprite, 64, 0);
+      sprite.resize(64, 0);
     }
     spriteNum = 0;
     speed = 8;
@@ -70,7 +70,7 @@ public class Player extends Character{
     else {
       tint = false;
     }
-    image(sprite[spriteNum], x, y);
+    image(sprites[spriteNum], x, y);
     noTint();
   }
   
