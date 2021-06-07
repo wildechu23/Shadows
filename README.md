@@ -43,3 +43,8 @@ Open Shadows.pde and hit Run
 - Necromancer is started and has the ability to summon enemies(Joshua)
 - Bat movement is now animated(Joshua)
 - Bat attack is now animated(Joshua)
+
+6/6:
+- Player now faces correct direction(Wilde)
+- UI class created along with Hearts(Wilde)
+- Hearts now display player health(Wilde)
