@@ -48,3 +48,6 @@ Open Shadows.pde and hit Run
 - Player now faces correct direction(Wilde)
 - UI class created along with Hearts(Wilde)
 - Hearts now display player health(Wilde)
+
+6/8:
+- Walls and corners added(Wilde)
