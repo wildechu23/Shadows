@@ -21,9 +21,10 @@ void draw() {
     rect(width / 2, height / 2, 90, 30);
     fill(0, 0, 0);
     text("start", width / 2, height / 2 + 25);
-    textSize(40);
   }
-  text(frameRate,width-20,20);
+  fill(255);
+  textSize(20);
+  text("FPS: " + frameRate,width-160,50);
 }
 
 void keyPressed() {

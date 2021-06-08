@@ -13,7 +13,7 @@ public class Floor {
   
   public void roomGeneration() {
     //for now, just manually add some rooms
-    roomArray[3][3] = new Room(0);
+    roomArray[3][3] = new Room(1);
   }
   
   public void draw() {

@@ -38,6 +38,10 @@ public class Player extends Character{
   public void move() {
     x += dx * speed; 
     y += dy * speed;
+    if(x < 128) x=128;
+    if(x > width-256) x = width-256;
+    if(y < 128) y=128;
+    if(y > height-256) y = height-256;
   }
   public void update() {
     if (hearts <= 0) {
