@@ -53,6 +53,7 @@ Open Shadows.pde and hit Run
 - Walls and corners added(Wilde)
 
 6/9:
-- Collision with rocks(Joshua & Wilde)
+- Collision with rocks(Joshua)
+- Corrected collision bounds (Wilde)
 - Projectiles now correspond to primaryWeapon(Wilde)
 - Began work on Inventory of the UI(Wilde)
