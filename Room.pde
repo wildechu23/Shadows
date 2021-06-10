@@ -11,7 +11,7 @@ public class Room {
     this.tileArray = loadTileArray(roomNum);
     int numEnemy = (int)(Math.random() * 4) + 2;
     for (int i = 0; i < numEnemy; i++) {
-      int type = (int)(Math.random() * 1) + 1;
+      int type = (int)(Math.random() * 1 + 1);
       switch(type) {
         case 1:
           enemies.add(new Skeleton());
