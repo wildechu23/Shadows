@@ -41,7 +41,6 @@ public class Player extends Character{
     boolean canMovey = true;
     for (int i = 0; i < floor.cRoom.rocks.size(); i++) {
       if (floor.cRoom.rocks.get(i) instanceof Door && (floor.cRoom.rocks.get(i).isColliding(this)[0] == 0 || floor.cRoom.rocks.get(i).isColliding(this)[1] == 0)) {
-        System.out.println("hewwo");
         switch(floor.cRoom.rocks.get(i).direction) {
           case "left":
             floor.cRoomCoords[0] -= 1;

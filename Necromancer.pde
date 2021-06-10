@@ -27,7 +27,7 @@ public class Necromancer extends Enemy{
  
       //}
       //if (type == 2) {
-        game.enemies.add(new Bat((int)(Math.random() * (width - 64)), (int)(Math.random() * (height - 64))));
+        game.floor.cRoom.enemies.add(new Bat((int)(Math.random() * (width - 64)), (int)(Math.random() * (height - 64))));
       //}
     }   
     }

@@ -5,7 +5,6 @@ public class Game {
   private Floor floor;
   private UI ui;
   public Player player;
-  public ArrayList<Enemy> enemies;
   public ArrayList<Projectile> projectiles;
   private Shadows shadows;
   
@@ -15,11 +14,7 @@ public class Game {
     floor = new Floor();
     ui = new UI();
     player = new Player();
-    enemies = new ArrayList<Enemy>();
     projectiles = new ArrayList<Projectile>();
-    enemies.add(new Necromancer());
-    enemies.get(0).x = 400;
-    enemies.get(0).y = 400;
   }
   
   public void draw() {
@@ -27,7 +22,7 @@ public class Game {
     //rect(50,50,100,100);
     floor.draw();
     player.draw();
-    for (Enemy enemy : enemies) {
+    for (Enemy enemy : floor.cRoom.enemies) {
       enemy.draw(player);
     }
     for(Projectile proj : projectiles) {
@@ -50,7 +45,7 @@ public class Game {
         projectiles.remove(i);
       }
       //println(proj.getCharacter().getClass());
-      for (Enemy enemy : enemies) {
+      for (Enemy enemy : floor.cRoom.enemies) {
         if ((projectiles.size() > 0 && proj.getCharacter() instanceof Player && proj.isColliding(enemy))) {
           projectiles.remove(i);
           break;
@@ -66,13 +61,13 @@ public class Game {
     player.update();
     floor.update();
     player.move(floor);
-    for (int i = 0; i < enemies.size(); i++) {
-      if (enemies.get(i).isAlive == false) {
-        enemies.remove(i);
+    for (int i = 0; i < floor.cRoom.enemies.size(); i++) {
+      if (floor.cRoom.enemies.get(i).isAlive == false) {
+        floor.cRoom.enemies.remove(i);
         continue;
       }
-      enemies.get(i).move(player, this);
-      enemies.get(i).update();
+      floor.cRoom.enemies.get(i).move(player, this);
+      floor.cRoom.enemies.get(i).update();
     }
     //println("Projectiles size: ", projectiles.size()); 
     

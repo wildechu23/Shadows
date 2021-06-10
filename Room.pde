@@ -3,10 +3,32 @@ public class Room {
   private PImage ground, rock, upWall, leftWall, downWall, rightWall, tlCorner, trCorner, dlCorner, drCorner;
   private int[][] tileArray;
   private ArrayList<Rock> rocks;
+  public ArrayList<Enemy> enemies;
  
   public Room(int roomNum) {
     rocks = new ArrayList<Rock>();
+    enemies = new ArrayList<Enemy>();
     this.tileArray = loadTileArray(roomNum);
+    int numEnemy = (int)(Math.random() * 4) + 2;
+    for (int i = 0; i < numEnemy; i++) {
+      int type = (int)(Math.random() * 1) + 1;
+      switch(type) {
+        case 1:
+          enemies.add(new Skeleton());
+          break;
+        case 2:
+          enemies.add(new Bat());
+          break;
+      }
+      int x = (int)(Math.random() * 12);
+      int y = (int)(Math.random() * 6);
+      while (tileArray[y][x] == 1) {
+        x = (int)(Math.random() * 13);
+        y = (int)(Math.random() * 7);
+      }
+      enemies.get(i).x = 128 * x;
+      enemies.get(i).y = 128 * y;
+    }
     ground = loadImage("tempGround.png");
     rock = loadImage("tempRock.png");
     upWall = loadImage("upWall.png");
