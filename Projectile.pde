@@ -2,7 +2,7 @@ public abstract class Projectile {
   public int damage, speed, range, x, y;
   public float angle;
   public PImage sprite;
-  private Character character;
+  public Character character;
   
   public Projectile(Player player) {
     this.character = player;

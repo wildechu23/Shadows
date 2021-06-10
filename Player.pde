@@ -1,7 +1,7 @@
 public class Player extends Character{
   private int shields, dashCooldown, dx, dy, speed;
   float attackCD;
-  //private Weapon primaryWeapon, secondaryWeapon;
+  private Weapon primaryWeapon, secondaryWeapon;
   //private PowerUp currentPower;
   public boolean isPowerActive;
   private PImage[] sprites;
@@ -11,6 +11,7 @@ public class Player extends Character{
     sprites = new PImage[2];
     sprites[0] = loadImage("ninja.png");
     sprites[1] = loadImage("mirrorNinja.png");
+    primaryWeapon = new Shurikens();
     for(PImage sprite : sprites) {
       sprite.resize(64, 0);
     }

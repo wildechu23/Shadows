@@ -1,3 +1,5 @@
+import java.lang.reflect.*;
+
 public class Game {
   public boolean isRunning;
   private Floor floor;
@@ -5,8 +7,10 @@ public class Game {
   public Player player;
   public ArrayList<Enemy> enemies;
   public ArrayList<Projectile> projectiles;
+  private Shadows shadows;
   
-  public Game() {
+  public Game(Shadows shadows) {
+    this.shadows = shadows;
     isRunning = true;
     floor = new Floor();
     ui = new UI();
@@ -93,7 +97,18 @@ public class Game {
   
   public void click(boolean mouseLeft) {
     if(mouseLeft && System.currentTimeMillis() / 1000 - player.time >= player.attackCD) {
-      projectiles.add(new Shuriken(player));
+      Weapon p = player.primaryWeapon;
+      Class c = p.projectile;
+      try {
+        //Constructor<Projectile>[] constructors = c.getDeclaredConstructors();
+        //for(Constructor<Projectile> con : constructors) {
+        //  println(con);
+        //}
+        Constructor<Projectile> constructor = c.getDeclaredConstructor(new Class[]{Shadows.class, Player.class});
+        projectiles.add(constructor.newInstance(shadows, player));
+      } catch(Exception e) {
+        e.printStackTrace();
+      }
       player.time = System.currentTimeMillis() / 1000;
       //print(projectiles.size());
     }

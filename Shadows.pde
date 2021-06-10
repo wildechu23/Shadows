@@ -43,6 +43,6 @@ void mousePressed() {
   if (game != null)
   game.click(mouseButton == LEFT);
   else if (mouseX >= width / 2 && mouseX <= width / 2 + 100 && mouseY >= height / 2 && mouseY <= height / 2 + 100) {
-    game = new Game();
+    game = new Game(this);
   }
 }
