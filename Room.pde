@@ -11,7 +11,7 @@ public class Room {
     this.tileArray = loadTileArray(roomNum);
     int numEnemy = (int)(Math.random() * 4) + 2;
     for (int i = 0; i < numEnemy; i++) {
-      int type = (int)(Math.random() * 1 + 1);
+      int type = round((float)((Math.random() * 1) + 1));
       switch(type) {
         case 1:
           enemies.add(new Skeleton());
@@ -20,11 +20,11 @@ public class Room {
           enemies.add(new Bat());
           break;
       }
-      int x = (int)(Math.random() * 12);
-      int y = (int)(Math.random() * 6);
+      int x = (int)(Math.random() * 9) + 1;
+      int y = (int)(Math.random() * 5) + 1;
       while (tileArray[y][x] == 1) {
-        x = (int)(Math.random() * 13);
-        y = (int)(Math.random() * 7);
+        x = (int)(Math.random() * 9) + 1;
+        y = (int)(Math.random() * 5) + 1;
       }
       enemies.get(i).x = 128 * x;
       enemies.get(i).y = 128 * y;
