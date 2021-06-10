@@ -2,7 +2,7 @@ public class Player extends Character{
   private int shields, dashCooldown, dx, dy, speed;
   float attackCD;
   private Weapon primaryWeapon, secondaryWeapon;
-  //private PowerUp currentPower;
+  private PowerUp currentPower;
   public boolean isPowerActive;
   private PImage[] sprites;
   private int spriteNum;
@@ -92,7 +92,20 @@ public class Player extends Character{
   public int getY() {
     return y;
   }
+  
   public int getHearts() {
     return hearts;
+  }
+  
+  public Weapon getPrimary() {
+    return primaryWeapon;
+  }
+  
+  public Weapon getSecondary() {
+    return secondaryWeapon;
+  }
+  
+  public PowerUp getPower() {
+    return currentPower;
   }
 }
