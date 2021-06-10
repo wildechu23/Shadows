@@ -66,8 +66,11 @@ public class Room {
            case 9:
              image(drCorner, x, y);
              break;
+           case 10:
+             image(rock, x, y);
+             break;
           default:
-            throw new RuntimeException("Does not recognize tile number");
+            throw new RuntimeException("Does not recognize tile number: " + tile);
         }
       }
     }
@@ -99,9 +102,21 @@ public class Room {
       for(int i = 0; i < 7; i++) {
         line = reader.readLine();
         for(int j = 0; j < 13; j++) {
-          array[i][j] = Integer.parseInt(line.substring(j,j+1));
-          if (array[i][j] == 1) {
+          if (line.substring(j, j+1).equals("d")) {
+            array[i][j] = 10;
+          }
+          else {
+            array[i][j] = Integer.parseInt(line.substring(j,j+1));
+          }
+          if (array[i][j] != 0 && array[i][j] != 10) {
             rocks.add(new Rock(j * 128, i * 128));
+          }
+          else if (array[i][j] == 10) {
+            System.out.println("door");
+            if (i == 0) rocks.add(new Door(j * 128, i * 128, "left"));
+            if (i == array.length - 1) rocks.add(new Door(j * 128, i * 128, "right"));
+            if (j == 0) rocks.add(new Door(j * 128, i * 128, "up"));
+            if (j == array[0].length - 1) rocks.add(new Door(j * 128, i * 128, "down"));
           }
         }
       }

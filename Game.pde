@@ -65,7 +65,7 @@ public class Game {
     }
     player.update();
     floor.update();
-    player.move(floor.roomArray[3][3]);
+    player.move(floor);
     for (int i = 0; i < enemies.size(); i++) {
       if (enemies.get(i).isAlive == false) {
         enemies.remove(i);

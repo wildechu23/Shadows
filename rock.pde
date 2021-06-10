@@ -1,8 +1,7 @@
 public class Rock {
-  PImage sprite;
   int x, y;
+  String direction;
   public Rock(int x, int y) {
-    sprite = loadImage("tempRock.png");
     this.x = x;
     this.y = y;
   }
