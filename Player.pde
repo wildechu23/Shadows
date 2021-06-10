@@ -16,8 +16,8 @@ public class Player extends Character{
     }
     spriteNum = 0;
     speed = 8;
-    x = 500;
-    y = 400;
+    x = 400;
+    y = 300;
     dx = 0;
     dy = 0;
     isAlive = true;
@@ -35,9 +35,15 @@ public class Player extends Character{
     return speed;
   }
   
-  public void move() {
-    x += dx * speed; 
-    y += dy * speed;
+  public void move(Room room) {
+    boolean canMove = true;
+    for (rock rocks : room.rocks) {
+      if (rocks.isColliding(this)) canMove = false;
+    }
+    if (canMove == true) {
+      x += dx * speed; 
+      y += dy * speed;
+    }
     if(x < 128) x=128;
     if(x > width-256) x = width-256;
     if(y < 128) y=128;

@@ -2,8 +2,10 @@ public class Room {
   private PImage tileMap;
   private PImage ground, rock, upWall, leftWall, downWall, rightWall, tlCorner, trCorner, dlCorner, drCorner;
   private int[][] tileArray;
+  private ArrayList<rock> rocks;
  
   public Room(int roomNum) {
+    rocks = new ArrayList<rock>();
     this.tileArray = loadTileArray(roomNum);
     ground = loadImage("tempGround.png");
     rock = loadImage("tempRock.png");
@@ -98,6 +100,9 @@ public class Room {
         line = reader.readLine();
         for(int j = 0; j < 13; j++) {
           array[i][j] = Integer.parseInt(line.substring(j,j+1));
+          if (array[i][j] == 1) {
+            rocks.add(new rock(j * 128, i * 128));
+          }
         }
       }
     } catch (IOException e) {

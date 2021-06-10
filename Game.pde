@@ -38,7 +38,7 @@ public class Game {
     }
     player.update();
     floor.update();
-    player.move();
+    player.move(floor.roomArray[3][3]);
     for (int i = 0; i < enemies.size(); i++) {
       if (enemies.get(i).isAlive == false) {
         enemies.remove(i);
@@ -50,6 +50,12 @@ public class Game {
     //println("Projectiles size: ", projectiles.size()); 
     for(int i = 0; i < projectiles.size(); i++) {
       Projectile proj = projectiles.get(i);
+      for (rock rocks : floor.roomArray[3][3].rocks) {
+        if (projectiles.size() > 0 && rocks.isColliding(proj)) {
+          projectiles.remove(i);
+          continue;
+        }
+      }
       proj.update();
       if(proj.getX() < -100 || proj.getX() > width + 100 || proj.getY() < -100 || proj.getY() > height + 100) {
         projectiles.remove(i);
