@@ -33,6 +33,29 @@ public class Game {
   }
   
   public void update() {
+    for(int i = 0; i < projectiles.size(); i++) {
+      Projectile proj = projectiles.get(i);
+      for (Rock rocks : floor.roomArray[3][3].rocks) {
+        if (projectiles.size() > 0 && rocks.isColliding(proj)) {
+          projectiles.remove(i);
+          continue;
+        }
+      }
+      proj.update();
+      if(proj.getX() < -100 || proj.getX() > width + 100 || proj.getY() < -100 || proj.getY() > height + 100) {
+        projectiles.remove(i);
+      }
+      //println(proj.getCharacter().getClass());
+      for (Enemy enemy : enemies) {
+        if ((projectiles.size() > 0 && proj.getCharacter() instanceof Player && proj.isColliding(enemy))) {
+          projectiles.remove(i);
+          break;
+        }
+      }
+      if (projectiles.size() > 0 && (proj.getCharacter() instanceof Enemy && proj.isColliding(player))) {
+        projectiles.remove(i);
+      }
+    }
    if (player.isAlive == false) {
       isRunning = false;
     }
@@ -48,29 +71,7 @@ public class Game {
       enemies.get(i).update();
     }
     //println("Projectiles size: ", projectiles.size()); 
-    for(int i = 0; i < projectiles.size(); i++) {
-      Projectile proj = projectiles.get(i);
-      for (rock rocks : floor.roomArray[3][3].rocks) {
-        if (projectiles.size() > 0 && rocks.isColliding(proj)) {
-          projectiles.remove(i);
-          continue;
-        }
-      }
-      proj.update();
-      if(proj.getX() < -100 || proj.getX() > width + 100 || proj.getY() < -100 || proj.getY() > height + 100) {
-        projectiles.remove(i);
-      }
-      //println(proj.getCharacter().getClass());
-      for (Enemy enemy : enemies) {
-        if ((proj.getCharacter() instanceof Player && proj.isColliding(enemy))) {
-          projectiles.remove(i);
-          break;
-        }
-      }
-      if ((proj.getCharacter() instanceof Enemy && proj.isColliding(player))) {
-        projectiles.remove(i);
-      }
-    }
+    
     ui.update(player);
     //if (enemy != null) {
     //  for(int i = 0; i < enemy.projectiles.size(); i++) {

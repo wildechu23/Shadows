@@ -1,8 +1,9 @@
 public class Hearts {
   private int num;
-  private PImage sprite;
+  private PImage heart, half;
   public Hearts(int heartNum) {
-    sprite = loadImage("heart.png");
+    heart = loadImage("heart.png");
+    half = loadImage("halfHeart.png");
     num = heartNum;
   }
   
@@ -11,8 +12,12 @@ public class Hearts {
   }
   
   public void draw() {
-    for(int i = 0; i < num; i++) {
-      image(sprite,i*80 + 20, 20); 
+    for(int i = 0; i < num; i += 2) {
+      if(i + 1 < num) {
+        image(heart,i*40 + 20, 20); 
+      } else {
+        image(half, i*40 + 20, 20);
+      }   
     }
   }
 }

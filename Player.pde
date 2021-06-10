@@ -37,7 +37,7 @@ public class Player extends Character{
   
   public void move(Room room) {
     boolean canMove = true;
-    for (rock rocks : room.rocks) {
+    for (Rock rocks : room.rocks) {
       if (rocks.isColliding(this)) canMove = false;
     }
     if (canMove == true) {
@@ -45,9 +45,9 @@ public class Player extends Character{
       y += dy * speed;
     }
     if(x < 128) x=128;
-    if(x > width-256) x = width-256;
-    if(y < 128) y=128;
-    if(y > height-256) y = height-256;
+    if(x > width-188) x = width-188;
+    if(y < 120) y=120;
+    if(y > height-216) y = height-216;
   }
   public void update() {
     if (hearts <= 0) {
