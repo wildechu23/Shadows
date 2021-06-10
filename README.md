@@ -57,3 +57,6 @@ Open Shadows.pde and hit Run
 - Corrected collision bounds (Wilde)
 - Projectiles now correspond to primaryWeapon(Wilde)
 - Began work on Inventory of the UI(Wilde)
+
+6/10
+= Perfected collision(Joshua)
