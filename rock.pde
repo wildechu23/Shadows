@@ -9,8 +9,8 @@ public class Rock {
   
   public boolean isColliding(Player player) {
     int xloc = player.x + player.dx * player.speed;
-    println("xloc: ", xloc);
-    println("x: ", x);
+    //println("xloc: ", xloc);
+    //println("x: ", x);
     int yloc = player.y + player.dy * player.speed;
     if ((xloc > x - 60 && xloc < x + 128 && yloc > y - 88 && yloc < y + 120)) {
       return true;
