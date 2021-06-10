@@ -37,12 +37,20 @@ public class Player extends Character{
   }
   
   public void move(Room room) {
-    boolean canMove = true;
+    boolean canMovex = true;
+    boolean canMovey = true;
     for (Rock rocks : room.rocks) {
-      if (rocks.isColliding(this)) canMove = false;
+      if (rocks.isColliding(this)[0] == 0) {
+        canMovex = false;
+      }
+      if (rocks.isColliding(this)[1] == 0) {
+        canMovey = false;
+      }
     }
-    if (canMove == true) {
-      x += dx * speed; 
+    if (canMovex == true) {
+      x += dx * speed;
+    }
+    if (canMovey == true) {
       y += dy * speed;
     }
     if(x < 128) x=128;

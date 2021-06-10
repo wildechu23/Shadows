@@ -7,15 +7,22 @@ public class Rock {
     this.y = y;
   }
   
-  public boolean isColliding(Player player) {
+  public int[] isColliding(Player player) {
+    int[] arr = new int[2];
+    arr[0] = 1;
+    arr[1] = 1;
     int xloc = player.x + player.dx * player.speed;
     //println("xloc: ", xloc);
     //println("x: ", x);
     int yloc = player.y + player.dy * player.speed;
-    if ((xloc > x - 60 && xloc < x + 128 && yloc > y - 88 && yloc < y + 120)) {
-      return true;
+    if ((xloc > x - 60 && xloc < x + 128 && player.y > y - 88 && player.y < y + 120)) {
+      arr[0] = 0;
     }
-    return false;
+    if ((player.x > x - 60 && player.x < x + 128 && yloc > y - 88 && yloc < y + 120)) {
+      arr[1] = 0;
+    }
+    
+    return arr;
   }
   public boolean isColliding(Projectile projectile) {
     float xloc = projectile.x + cos(projectile.angle) * projectile.speed;
