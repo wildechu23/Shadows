@@ -51,3 +51,6 @@ Open Shadows.pde and hit Run
 
 6/8:
 - Walls and corners added(Wilde)
+
+6/9:
+- collision with rocks(Joshua)
