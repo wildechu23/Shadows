@@ -16,9 +16,9 @@ public class Player extends Character{
     animation[3] = loadImage("swordslash3.png");
     primaryWeapon = new Sword();
     animation[0].resize(64, 0);
-    animation[1].resize(64, 0);
-    animation[2].resize(64, 0);
-    animation[3].resize(64, 0);
+    animation[1].resize(86, 0);
+    animation[2].resize(86, 0);
+    animation[3].resize(86, 0);
     if (primaryWeapon instanceof Sword) {
       normal = 1;
     }
