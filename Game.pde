@@ -1,8 +1,11 @@
 import java.lang.reflect.*;
+import java.util.Scanner;
+import java.io.*;
 
 public class Game {
   public boolean isRunning, pause;
   private Floor floor;
+  private int floorNum;
   private UI ui;
   public Player player;
   public ArrayList<Projectile> projectiles;
@@ -14,6 +17,7 @@ public class Game {
     isRunning = true;
     pause = false;
     floor = new Floor();
+    floorNum = 1;
     ui = new UI();
     player = new Player();
     projectiles = new ArrayList<Projectile>();
@@ -34,6 +38,8 @@ public class Game {
         proj.draw();
       }
       ui.draw();
+      textSize(30);
+      text("Floor " + floorNum, width-300, 40);
     }
     image(button, width - 74, 10);
   }
@@ -42,7 +48,7 @@ public class Game {
     for(int i = 0; i < projectiles.size(); i++) {
       Projectile proj = projectiles.get(i);
       for (Rock rocks : floor.cRoom.rocks) {
-        if (projectiles.size() > 0 && rocks.isColliding(proj)) {
+        if (projectiles.size() > 0 && i < projectiles.size() && rocks.isColliding(proj)) {
           
           projectiles.remove(i);
           continue;
@@ -61,7 +67,7 @@ public class Game {
           break;
         }
       }
-      if (projectiles.size() > 0 && (proj.getCharacter() instanceof Enemy && proj.isColliding(player))) {
+      if (projectiles.size() > 0 && i < projectiles.size() && (proj.getCharacter() instanceof Enemy && proj.isColliding(player))) {
         
         projectiles.remove(i);
         continue;
@@ -168,6 +174,28 @@ public class Game {
     //    }
     //  }
     //}
+    if(floor.cRoomCoords[0] == 0 && floor.cRoomCoords[1] == 4) {
+      for(Enemy enemy : floor.cRoom.enemies) {
+        if(enemy instanceof Necromancer) {
+          return;
+        }
+      }
+      floorNum++;
+      //try {
+      //  String[] a = loadStrings("highscore.txt");
+      //  if(floorNum > Integer.parseInt(a[0])) {
+      //    PrintWriter p = createWriter("highscore.txt");
+      //    p.print(floorNum);
+      //    p.flush();
+      //    p.close();
+      //  }
+      //} catch(Exception e) {
+      //  e.printStackTrace();
+      //}
+      floor = new Floor();
+      player.x = 400;
+      player.y = 300;
+    }
   }
   
   public boolean running() {
