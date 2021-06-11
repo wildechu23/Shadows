@@ -34,7 +34,7 @@ public class Game {
   public void update() {
     for(int i = 0; i < projectiles.size(); i++) {
       Projectile proj = projectiles.get(i);
-      for (Rock rocks : floor.roomArray[3][3].rocks) {
+      for (Rock rocks : floor.cRoom.rocks) {
         if (projectiles.size() > 0 && rocks.isColliding(proj)) {
           projectiles.remove(i);
           continue;
@@ -43,6 +43,7 @@ public class Game {
       proj.update();
       if(proj.getX() < -100 || proj.getX() > width + 100 || proj.getY() < -100 || proj.getY() > height + 100) {
         projectiles.remove(i);
+        continue;
       }
       //println(proj.getCharacter().getClass());
       for (Enemy enemy : floor.cRoom.enemies) {
@@ -53,6 +54,7 @@ public class Game {
       }
       if (projectiles.size() > 0 && (proj.getCharacter() instanceof Enemy && proj.isColliding(player))) {
         projectiles.remove(i);
+        continue;
       }
     }
    if (player.isAlive == false) {
@@ -62,7 +64,7 @@ public class Game {
     floor.update();
     player.move(floor);
     for (int i = 0; i < floor.cRoom.rocks.size(); i++) {
-      if (floor.cRoom.rocks.get(i) instanceof Door && (floor.cRoom.rocks.get(i).isColliding(player)[0] == 0 || floor.cRoom.rocks.get(i).isColliding(player)[1] == 0)) {
+      if (floor.cRoom.enemies.size() == 0 && floor.cRoom.rocks.get(i) instanceof Door && (floor.cRoom.rocks.get(i).isColliding(player)[0] == 0 || floor.cRoom.rocks.get(i).isColliding(player)[1] == 0)) {
         switch(floor.cRoom.rocks.get(i).direction) {
           case "left":
             floor.cRoomCoords[1] -= 1;

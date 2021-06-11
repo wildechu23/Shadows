@@ -1,7 +1,10 @@
-public class PowerUp {
+public class PowerUp extends Rock{
   int x, y;
   PImage sprite;
-  public PowerUp() {
+  public PowerUp(int x, int y) {
+    super(x, y);
+  }
+  public void draw() {
     
   }
 }

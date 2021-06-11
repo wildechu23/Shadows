@@ -3,9 +3,11 @@ public class Room {
   private char[][] tileArray;
   private ArrayList<Rock> rocks;
   public ArrayList<Enemy> enemies;
+  public ArrayList<PowerUp> powerups;
   private String doors = "uldr";
  
   public Room(int roomNum) {
+    powerups = new ArrayList<PowerUp>();
     rocks = new ArrayList<Rock>();
     enemies = new ArrayList<Enemy>();
     this.tileArray = loadTileArray(roomNum);
@@ -113,6 +115,9 @@ public class Room {
         }
       }
     }
+    for (int i = 0; i < powerups.size(); i++) {
+      powerups.get(i).draw();
+    }
   }
   
   public void update() {
@@ -150,6 +155,9 @@ public class Room {
             if (array[i][j] == 'r') rocks.add(new Door(j * 128, i * 128, "right"));
             if (array[i][j] == 'u') rocks.add(new Door(j * 128, i * 128, "up"));
             if (array[i][j] == 'd') rocks.add(new Door(j * 128, i * 128, "down"));
+          }
+          else if (array[i][j] == 'p') {
+            powerups.add(new PowerUp(j * 128, i * 128));
           }
         }
       }
