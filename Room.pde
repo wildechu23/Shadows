@@ -53,6 +53,10 @@ public class Room {
     trCorner.resize(128,0);
     dlCorner.resize(128,0);
     drCorner.resize(128,0);
+    upDoor.resize(128,0);
+    leftDoor.resize(128,0);
+    rightDoor.resize(128,0);
+    downDoor.resize(128,0);
   }
   
   public void draw() {
