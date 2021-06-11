@@ -46,12 +46,14 @@ void draw() {
       fill(0);
       text("Move with WASD, aim your weapon", width / 2 - 180, height / 2 - 160);
       text("with your mouse, and left click", width / 2 - 180, height / 2 - 130);
-      text("to attack! Make your way across", width / 2 - 180, height / 2 - 100);
-      text("the dungeon to the top right", width / 2 - 180, height / 2 - 70);
-      text("corner to fight the necromancer.", width / 2 - 180, height / 2 - 40);
-      text("Pick up powerups and hearts, and", width / 2 - 180, height / 2 - 10);
-      text("good luck on this endless descent.", width / 2 - 180, height / 2 + 20);
-      text("PS: You need to aim the sword.", width / 2 - 180, height / 2 + 80);
+      text("to attack. Press 1 to swap weapons.", width /2 - 180, height / 2 - 100);
+      text("Make your way across the dungeon", width / 2 - 180, height / 2 - 70);
+      text("to the top right corner to fight", width / 2 - 180, height / 2 - 40);
+      text("the necromancer. Pick up powerups", width / 2 - 180, height / 2 - 10);
+      text("and hearts, and good luck on this", width / 2 - 180, height / 2 + 20);
+      text("endless descent.", width / 2 - 180, height / 2 + 50);
+      
+      text("PS: You need to aim the sword.", width / 2 - 180, height / 2 + 110);
       triangle(width / 2 - 170, height / 2 + 160, width / 2 - 150, height / 2 + 150, width/2 - 150, height/2 + 170);
     }
   }
