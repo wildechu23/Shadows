@@ -31,6 +31,11 @@ void keyPressed() {
   if (game != null)
   game.player.pressed((key == 'w' || key == 'W'), (key == 'a' || key == 'A'),
                  (key == 's' || key == 'S'), (key == 'd' || key == 'D'));
+    if (key == '1') {
+      Weapon tempWeapon = game.player.primaryWeapon;
+      game.player.primaryWeapon = game.player.secondaryWeapon;
+      game.player.secondaryWeapon = tempWeapon;
+    }
 }
 
 void keyReleased() {
