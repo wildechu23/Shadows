@@ -16,8 +16,8 @@ public abstract class Projectile {
   
   public Projectile(Enemy enemy, Player player) {
     character = enemy;
-    x = character.x;
-    y = character.y;
+    x = character.x + 32;
+    y = character.y + 32;
     angle = atan2(player.y + 48 - y, player.x + 34 - x);
     speed = 10;
     damage = 1;

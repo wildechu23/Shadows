@@ -6,7 +6,7 @@ public class Shuriken extends Projectile {
   }
   
   public boolean isColliding(Character character) {
-    if ((x >= character.x && x <= character.x + character.size && y >= character.y && y <= character.y + character.size) || (x + 64 >= character.x && x + 64 <= character.x + character.size && y + 64 >= character.y && y + 64 <= character.y + character.size)) {
+    if ((x + 10 >= character.x && x - 10 <= character.x + character.size && y + 10 >= character.y && y - 10 <= character.y + character.size)) {
       character.tint = true;
       character.time2 = System.currentTimeMillis();
       character.hearts -= damage;

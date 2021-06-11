@@ -2,7 +2,10 @@ public class Sword extends Weapon{
   int range;
   int damage;
   public Sword() {
-    super();
+    this.name = "Sword";
+    this.projectile = null;
+    this.sprite = loadImage("sword.png");
+    this.sprite.resize(128,0);
     range = 120;
     damage = 2;
   }

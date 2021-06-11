@@ -22,18 +22,20 @@ public class Game {
   }
   
   public void draw() {
-    //fill(255);
-    //rect(50,50,100,100);
-    floor.draw();
-    player.draw();
-    for (Enemy enemy : floor.cRoom.enemies) {
-      enemy.draw(player);
+    if(pause == false) {
+      //fill(255);
+      //rect(50,50,100,100);
+      floor.draw();
+      player.draw();
+      for (Enemy enemy : floor.cRoom.enemies) {
+        enemy.draw(player);
+      }
+      for(Projectile proj : projectiles) {
+        proj.draw();
+      }
+      ui.draw();
     }
-    for(Projectile proj : projectiles) {
-      proj.draw();
-    }
-    ui.draw();
-    image(button, width - 64, 0);
+    image(button, width - 74, 10);
   }
   
   public void update() {

@@ -16,8 +16,8 @@ public class Skeleton extends Enemy {
   public Skeleton(int x, int y) {
     super("skeleton.png");
     animation = loadImage("skeleton2.png");
-    animation.resize(64, 0);
-    sprite.resize(64, 0);
+    animation.resize(128, 0);
+    sprite.resize(128, 0);
     attackCD = 5;
     time = System.currentTimeMillis() / 1000 - attackCD;
     time2 = System.currentTimeMillis();
