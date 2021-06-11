@@ -39,7 +39,6 @@ public class Player extends Character{
   public void move(Floor floor) {
     boolean canMovex = true;
     boolean canMovey = true;
-    println(floor.cRoom.rocks.size());
     for (int i = 0; i < floor.cRoom.rocks.size(); i++) {
       //else {
         if (floor.cRoom.rocks.get(i).isColliding(this)[0] == 0) {

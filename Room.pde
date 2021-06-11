@@ -1,5 +1,5 @@
 public class Room {
-  private PImage ground, rock, upWall, leftWall, downWall, rightWall, tlCorner, trCorner, dlCorner, drCorner;
+  private PImage ground, rock, upWall, leftWall, downWall, rightWall, tlCorner, trCorner, dlCorner, drCorner, rightDoor, leftDoor, downDoor, upDoor;
   private char[][] tileArray;
   private ArrayList<Rock> rocks;
   public ArrayList<Enemy> enemies;
@@ -31,6 +31,10 @@ public class Room {
     }
     ground = loadImage("tempGround.png");
     rock = loadImage("tempRock.png");
+    upDoor = loadImage("upWall.png");
+    leftDoor = loadImage("leftDoor.png");
+    downDoor = loadImage("downDoor.png");
+    rightDoor = loadImage("rightDoor.png");
     upWall = loadImage("upWall.png");
     leftWall = loadImage("leftWall.png");
     downWall = loadImage("downWall.png");
@@ -89,16 +93,16 @@ public class Room {
              image(drCorner, x, y);
              break;
            case 'u':
-             image(rock, x, y);
+             image(upDoor, x, y);
              break;
            case 'l':
-             image(rock, x, y);
+             image(leftDoor, x, y);
              break;
            case 'd':
-             image(rock, x, y);
+             image(downDoor, x, y);
              break;
            case 'r':
-             image(rock, x, y);
+             image(rightDoor, x, y);
              break;
           default:
             throw new RuntimeException("Does not recognize tile number: " + tile);
@@ -138,11 +142,10 @@ public class Room {
             rocks.add(new Rock(j * 128, i * 128));
           }
           else if (doors.indexOf(array[i][j]) >= 0) {
-            System.out.println("door");
-            if (i == 0) rocks.add(new Door(j * 128, i * 128, "left"));
-            if (i == array.length - 1) rocks.add(new Door(j * 128, i * 128, "right"));
-            if (j == 0) rocks.add(new Door(j * 128, i * 128, "up"));
-            if (j == array[0].length - 1) rocks.add(new Door(j * 128, i * 128, "down"));
+            if (array[i][j] == 'l') rocks.add(new Door(j * 128, i * 128, "left"));
+            if (array[i][j] == 'r') rocks.add(new Door(j * 128, i * 128, "right"));
+            if (array[i][j] == 'u') rocks.add(new Door(j * 128, i * 128, "up"));
+            if (array[i][j] == 'd') rocks.add(new Door(j * 128, i * 128, "down"));
           }
         }
       }

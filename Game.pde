@@ -65,20 +65,28 @@ public class Game {
       if (floor.cRoom.rocks.get(i) instanceof Door && (floor.cRoom.rocks.get(i).isColliding(player)[0] == 0 || floor.cRoom.rocks.get(i).isColliding(player)[1] == 0)) {
         switch(floor.cRoom.rocks.get(i).direction) {
           case "left":
-            floor.cRoomCoords[0] -= 1;
+            floor.cRoomCoords[1] -= 1;
             floor.cRoom = floor.roomArray[floor.cRoomCoords[0]][floor.cRoomCoords[1]];
+            player.x = 11 * 128;
+            player.y = 3 * 128;
             break;
           case "right":
-            floor.cRoomCoords[0] -= 1;
+            floor.cRoomCoords[1] += 1;
             floor.cRoom = floor.roomArray[floor.cRoomCoords[0]][floor.cRoomCoords[1]];
+            player.x = 1 * 128;
+            player.y = 3 * 128;
             break;
           case "up":
             floor.cRoomCoords[0] -= 1;
             floor.cRoom = floor.roomArray[floor.cRoomCoords[0]][floor.cRoomCoords[1]];
+            player.x = 6 * 128;
+            player.y = 11 * 128;
             break;
           case "down":
-            floor.cRoomCoords[0] -= 1;
+            floor.cRoomCoords[0] += 1;
             floor.cRoom = floor.roomArray[floor.cRoomCoords[0]][floor.cRoomCoords[1]];
+            player.x = 6 * 128;
+            player.y = 1 * 128;
             break;
         }
       }
