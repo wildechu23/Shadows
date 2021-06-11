@@ -1,7 +1,7 @@
-public class sword extends Weapon{
+public class Sword extends Weapon{
   int range;
   int damage;
-  public sword() {
+  public Sword() {
     super();
     range = 120;
     damage = 2;

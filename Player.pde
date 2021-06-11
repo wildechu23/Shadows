@@ -4,17 +4,13 @@ public class Player extends Character{
   private Weapon primaryWeapon, secondaryWeapon;
   private PowerUp currentPower;
   public boolean isPowerActive;
-  private PImage[] sprites;
+  private PImage sprite;
   private int spriteNum;
-  public boolean isAlive;
+  public boolean isAlive, isMirror;
   public Player() {
-    sprites = new PImage[2];
-    sprites[0] = loadImage("ninja.png");
-    sprites[1] = loadImage("mirrorNinja.png");
-    primaryWeapon = new sword();
-    for(PImage sprite : sprites) {
-      sprite.resize(64, 0);
-    }
+    sprite = loadImage("ninja.png");
+    primaryWeapon = new Sword();
+    sprite.resize(64, 0);
     spriteNum = 0;
     speed = 8;
     x = 400;
@@ -65,11 +61,13 @@ public class Player extends Character{
   public void pressed(boolean w, boolean a, boolean s, boolean d) { 
     if (a) {
       dx = -1;
-      spriteNum = 0;
+      isMirror = false;
+      //spriteNum = 0;
     }
     if (d) {
       dx = 1;
-      spriteNum = 1;
+      isMirror = true;
+      //spriteNum = 1;
     }
     if (w) dy = -1;
     if (s) dy = 1;
@@ -88,7 +86,13 @@ public class Player extends Character{
     else {
       tint = false;
     }
-    image(sprites[spriteNum], x, y);
+    pushMatrix();
+    if(isMirror) {
+      scale(-1,1);
+      translate(-(2*x + sprite.width),0);
+    }
+    image(sprite, x, y);
+    popMatrix();
     noTint();
   }
   

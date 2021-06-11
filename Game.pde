@@ -124,7 +124,7 @@ public class Game {
   public void click(boolean mouseLeft) {
     if(mouseLeft && System.currentTimeMillis() / 1000 - player.time >= player.attackCD) {
       Weapon p = player.primaryWeapon;
-      if (!(p instanceof sword)) {
+      if (!(p instanceof Sword)) {
         Class c = p.projectile;
         try {
           //Constructor<Projectile>[] constructors = c.getDeclaredConstructors();
