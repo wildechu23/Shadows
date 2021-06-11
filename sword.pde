@@ -9,7 +9,7 @@ public class Sword extends Weapon{
   public void attack(Game game) {
     float angle = atan2(mouseY - game.player.y, mouseX - game.player.x);
     System.out.println(angle);
-    if (-angle <= PI / 2 && angle >= PI / 2) game.player.isMirror = true;
+    if ((-angle >= PI / 2 && -angle <= PI) || (angle <= PI && angle >= PI / 2)) game.player.isMirror = true;
     else if (game.player.isMirror == true) game.player.isMirror = false;
     for (Enemy enemy : game.floor.cRoom.enemies) {
       if (dist(enemy.x, enemy.y, game.player.x, game.player.y) <= range && Math.abs(angle - atan2(enemy.y - game.player.y, enemy.x - game.player.x)) <= PI / 3) {
