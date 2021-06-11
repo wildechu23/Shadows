@@ -124,16 +124,21 @@ public class Game {
   public void click(boolean mouseLeft) {
     if(mouseLeft && System.currentTimeMillis() / 1000 - player.time >= player.attackCD) {
       Weapon p = player.primaryWeapon;
-      Class c = p.projectile;
-      try {
-        //Constructor<Projectile>[] constructors = c.getDeclaredConstructors();
-        //for(Constructor<Projectile> con : constructors) {
-        //  println(con);
-        //}
-        Constructor<Projectile> constructor = c.getDeclaredConstructor(new Class[]{Shadows.class, Player.class});
-        projectiles.add(constructor.newInstance(shadows, player));
-      } catch(Exception e) {
-        e.printStackTrace();
+      if (!(p instanceof sword)) {
+        Class c = p.projectile;
+        try {
+          //Constructor<Projectile>[] constructors = c.getDeclaredConstructors();
+          //for(Constructor<Projectile> con : constructors) {
+          //  println(con);
+          //}
+          Constructor<Projectile> constructor = c.getDeclaredConstructor(new Class[]{Shadows.class, Player.class});
+          projectiles.add(constructor.newInstance(shadows, player));
+        } catch(Exception e) {
+          e.printStackTrace();
+        }
+      }
+      else {
+        p.attack(this);
       }
       player.time = System.currentTimeMillis() / 1000;
       //print(projectiles.size());
