@@ -6,4 +6,7 @@ public abstract class Weapon {
   public String getName() {
     return name;
   }
+  public void attack(Game game) {
+    
+  }
 }

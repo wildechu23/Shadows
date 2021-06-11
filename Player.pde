@@ -11,7 +11,7 @@ public class Player extends Character{
     sprites = new PImage[2];
     sprites[0] = loadImage("ninja.png");
     sprites[1] = loadImage("mirrorNinja.png");
-    primaryWeapon = new Shurikens();
+    primaryWeapon = new sword();
     for(PImage sprite : sprites) {
       sprite.resize(64, 0);
     }
