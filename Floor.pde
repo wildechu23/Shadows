@@ -15,7 +15,15 @@ public class Floor {
     //for now, just manually add some rooms
     for (int i = 0; i < roomArray.length; i++) {
       for (int j = 0; j < roomArray[0].length; j++) {
-        roomArray[i][j] = new Room(1);
+        if (i == 0 && j == 0) roomArray[i][j] = (new Room(6));
+        else if (i == 0 && j == 4) roomArray[i][j] = (new Room(8));
+        else if (i == 4 && j == 0) roomArray[i][j] = (new Room(4));
+        else if (i == 4 && j == 4) roomArray[i][j] = (new Room(10));
+        else if (i == 0) roomArray[i][j] = (new Room(11));
+        else if (j == 0) roomArray[i][j] = (new Room(5));
+        else if (i == 4) roomArray[i][j] = (new Room(7));
+        else if (j == 4) roomArray[i][j] = (new Room(9));
+        else roomArray[i][j] = (new Room(round((float)((Math.random() * 3)))));
       }
     }
   }
@@ -25,6 +33,7 @@ public class Floor {
   }
   
   public void update() {
+    System.out.println("i: " + cRoomCoords[0] + " j: " + cRoomCoords[1]);
     //cRoom.update();
   }
 }
