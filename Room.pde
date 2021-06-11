@@ -1,9 +1,9 @@
 public class Room {
-  private PImage tileMap;
   private PImage ground, rock, upWall, leftWall, downWall, rightWall, tlCorner, trCorner, dlCorner, drCorner;
-  private int[][] tileArray;
+  private char[][] tileArray;
   private ArrayList<Rock> rocks;
   public ArrayList<Enemy> enemies;
+  private String doors = "uldr";
  
   public Room(int roomNum) {
     rocks = new ArrayList<Rock>();
@@ -22,7 +22,7 @@ public class Room {
       }
       int x = (int)(Math.random() * 9) + 1;
       int y = (int)(Math.random() * 5) + 1;
-      while (tileArray[y][x] == 1) {
+      while (tileArray[y][x] == '1') {
         x = (int)(Math.random() * 9) + 1;
         y = (int)(Math.random() * 5) + 1;
       }
@@ -54,41 +54,50 @@ public class Room {
   public void draw() {
     for(int i = 0; i < tileArray.length; i++) {
       for(int j = 0; j < tileArray[i].length; j++) {
-        int tile = tileArray[i][j];
+        char tile = tileArray[i][j];
         int x = (j)*128;
         int y = i*128;
         switch(tile) {
-          case 0:
+          case '0':
             image(ground, x, y);
             break;
-          case 1:
+          case '1':
             image(rock, x, y);
             break;
-          case 2:
+          case '2':
             image(upWall, x, y);
             break;
-          case 3:
+          case '3':
             image(leftWall, x, y);
             break;
-          case 4:
+          case '4':
             image(downWall, x, y);
             break;
-          case 5:
+          case '5':
             image(rightWall, x, y);
             break;
-           case 6:
+           case '6':
              image(tlCorner, x, y);
              break;
-           case 7:
+           case '7':
              image(trCorner, x, y);
              break;
-           case 8:
+           case '8':
              image(dlCorner, x, y);
              break;
-           case 9:
+           case '9':
              image(drCorner, x, y);
              break;
-           case 10:
+           case 'u':
+             image(rock, x, y);
+             break;
+           case 'l':
+             image(rock, x, y);
+             break;
+           case 'd':
+             image(rock, x, y);
+             break;
+           case 'r':
              image(rock, x, y);
              break;
           default:
@@ -108,8 +117,8 @@ public class Room {
     //print("\n");
   }
   
-  private int[][] loadTileArray(int roomNum) {
-    int[][] array = new int[7][13];
+  private char[][] loadTileArray(int roomNum) {
+    char[][] array = new char[7][13];
     BufferedReader reader;
     String line;
     reader = createReader("rooms.txt");
@@ -124,16 +133,11 @@ public class Room {
       for(int i = 0; i < 7; i++) {
         line = reader.readLine();
         for(int j = 0; j < 13; j++) {
-          if (line.substring(j, j+1).equals("d")) {
-            array[i][j] = 10;
-          }
-          else {
-            array[i][j] = Integer.parseInt(line.substring(j,j+1));
-          }
-          if (array[i][j] != 0 && array[i][j] != 10) {
+          array[i][j] = line.charAt(j);
+          if (array[i][j] != '0' && doors.indexOf(array[i][j]) < 0) {
             rocks.add(new Rock(j * 128, i * 128));
           }
-          else if (array[i][j] == 10) {
+          else if (doors.indexOf(array[i][j]) >= 0) {
             System.out.println("door");
             if (i == 0) rocks.add(new Door(j * 128, i * 128, "left"));
             if (i == array.length - 1) rocks.add(new Door(j * 128, i * 128, "right"));

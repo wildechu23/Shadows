@@ -39,35 +39,16 @@ public class Player extends Character{
   public void move(Floor floor) {
     boolean canMovex = true;
     boolean canMovey = true;
+    println(floor.cRoom.rocks.size());
     for (int i = 0; i < floor.cRoom.rocks.size(); i++) {
-      if (floor.cRoom.rocks.get(i) instanceof Door && (floor.cRoom.rocks.get(i).isColliding(this)[0] == 0 || floor.cRoom.rocks.get(i).isColliding(this)[1] == 0)) {
-        switch(floor.cRoom.rocks.get(i).direction) {
-          case "left":
-            floor.cRoomCoords[0] -= 1;
-            floor.cRoom = floor.roomArray[floor.cRoomCoords[0]][floor.cRoomCoords[1]];
-            break;
-          case "right":
-            floor.cRoomCoords[0] -= 1;
-            floor.cRoom = floor.roomArray[floor.cRoomCoords[0]][floor.cRoomCoords[1]];
-            break;
-          case "up":
-            floor.cRoomCoords[0] -= 1;
-            floor.cRoom = floor.roomArray[floor.cRoomCoords[0]][floor.cRoomCoords[1]];
-            break;
-          case "down":
-            floor.cRoomCoords[0] -= 1;
-            floor.cRoom = floor.roomArray[floor.cRoomCoords[0]][floor.cRoomCoords[1]];
-            break;
-        }
-      }
-      else {
+      //else {
         if (floor.cRoom.rocks.get(i).isColliding(this)[0] == 0) {
           canMovex = false;
         }
         if (floor.cRoom.rocks.get(i).isColliding(this)[1] == 0) {
           canMovey = false;
         }
-      }
+      //}
     }
     if (canMovex == true) {
       x += dx * speed;
@@ -75,6 +56,7 @@ public class Player extends Character{
     if (canMovey == true) {
       y += dy * speed;
     }
+    //println(canMovex, canMovey);
   }
   public void update() {
     if (hearts <= 0) {

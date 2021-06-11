@@ -61,6 +61,29 @@ public class Game {
     player.update();
     floor.update();
     player.move(floor);
+    for (int i = 0; i < floor.cRoom.rocks.size(); i++) {
+      if (floor.cRoom.rocks.get(i) instanceof Door && (floor.cRoom.rocks.get(i).isColliding(player)[0] == 0 || floor.cRoom.rocks.get(i).isColliding(player)[1] == 0)) {
+        switch(floor.cRoom.rocks.get(i).direction) {
+          case "left":
+            floor.cRoomCoords[0] -= 1;
+            floor.cRoom = floor.roomArray[floor.cRoomCoords[0]][floor.cRoomCoords[1]];
+            break;
+          case "right":
+            floor.cRoomCoords[0] -= 1;
+            floor.cRoom = floor.roomArray[floor.cRoomCoords[0]][floor.cRoomCoords[1]];
+            break;
+          case "up":
+            floor.cRoomCoords[0] -= 1;
+            floor.cRoom = floor.roomArray[floor.cRoomCoords[0]][floor.cRoomCoords[1]];
+            break;
+          case "down":
+            floor.cRoomCoords[0] -= 1;
+            floor.cRoom = floor.roomArray[floor.cRoomCoords[0]][floor.cRoomCoords[1]];
+            break;
+        }
+      }
+    }
+    
     for (int i = 0; i < floor.cRoom.enemies.size(); i++) {
       if (floor.cRoom.enemies.get(i).isAlive == false) {
         floor.cRoom.enemies.remove(i);
