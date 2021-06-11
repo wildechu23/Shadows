@@ -16,9 +16,9 @@ public class Player extends Character{
     animation[3] = loadImage("swordslash3.png");
     primaryWeapon = new Sword();
     animation[0].resize(64, 0);
-    animation[1].resize(64, 0);
-    animation[2].resize(64, 0);
-    animation[3].resize(64, 0);
+    animation[1].resize(86, 0);
+    animation[2].resize(86, 0);
+    animation[3].resize(86, 0);
     if (primaryWeapon instanceof Sword) {
       normal = 1;
     }
@@ -37,7 +37,7 @@ public class Player extends Character{
     attackCD = 0.5;
     time = System.currentTimeMillis() / 1000 - 1;
     time2 = System.currentTimeMillis();
-    time3 = System.currentTimeMillis() - 500;
+    time3 = System.currentTimeMillis() - 300;
     size = 64;
   }
   public void setSpeed(int newSpeed) {
@@ -102,10 +102,10 @@ public class Player extends Character{
     else {
       tint = false;
     }
-    if (System.currentTimeMillis() - time3 <= 250) {
+    if (System.currentTimeMillis() - time3 <= 150) {
       index = 2;
     }
-    else if (System.currentTimeMillis() - time3 <= 500) {
+    else if (System.currentTimeMillis() - time3 <= 300) {
       index = 3;
     }
     pushMatrix();
