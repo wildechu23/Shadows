@@ -26,7 +26,8 @@ public abstract class Enemy extends Character{
   public void update(Floor floor) {
     if (hearts <= 0) {
       int powerup = round((float)Math.random() * 25);
-      if (powerup == 0) {
+      if (powerup == 0 || powerup == 6) {
+        System.out.println("powerup");
         int type = round((float)Math.random());
         if (type == 0)
           floor.cRoom.powerups.add(new damageUp(x, y));

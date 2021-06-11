@@ -127,6 +127,12 @@ public class Game {
       if (floor.cRoom.powerups.get(i).isColliding(player)[0] == 0 || floor.cRoom.powerups.get(i).isColliding(player)[1] == 0) {
         if (floor.cRoom.powerups.get(i) instanceof damageUp) {
           player.damage += 1;
+          if (player.primaryWeapon instanceof Sword) {
+            player.primaryWeapon.damage += 1;
+          }
+          else {
+            player.secondaryWeapon.damage += 1;
+          }
         }
         if (floor.cRoom.powerups.get(i) instanceof speedUp) {
           player.speed += 1;

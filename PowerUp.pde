@@ -4,8 +4,6 @@ public class PowerUp{
   public PowerUp(int x, int y) {
     this.x = x;
     this.y = y;
-    sprite = loadImage("ninja.png");
-    sprite.resize(64, 0);
   }
   public void draw() {
     image(sprite, x, y);
