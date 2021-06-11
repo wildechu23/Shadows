@@ -15,5 +15,6 @@ public class Sword extends Weapon{
         enemy.hearts -= damage;
       }
     }
+    game.player.time3 = System.currentTimeMillis();
   }
 }

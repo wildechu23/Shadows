@@ -1,16 +1,30 @@
 public class Player extends Character{
-  private int shields, dashCooldown, dx, dy, speed;
+  private int shields, dashCooldown, dx, dy, speed, normal;
   float attackCD;
   private Weapon primaryWeapon, secondaryWeapon;
   private PowerUp currentPower;
   public boolean isPowerActive;
-  private PImage sprite;
+  private PImage[] animation;
   private int spriteNum;
   public boolean isAlive, isMirror;
+  double time3;
   public Player() {
-    sprite = loadImage("ninja.png");
+    animation = new PImage[4];
+    animation[0] = loadImage("ninja.png");
+    animation[1] = loadImage("swordstance.png");
+    animation[2] = loadImage("swordslash2.png");
+    animation[3] = loadImage("swordslash3.png");
     primaryWeapon = new Sword();
-    sprite.resize(64, 0);
+    animation[0].resize(64, 0);
+    animation[1].resize(64, 0);
+    animation[2].resize(64, 0);
+    animation[3].resize(64, 0);
+    if (primaryWeapon instanceof Sword) {
+      normal = 1;
+    }
+    else {
+      normal = 0;
+    }
     spriteNum = 0;
     speed = 8;
     x = 400;
@@ -23,6 +37,7 @@ public class Player extends Character{
     attackCD = 0.5;
     time = System.currentTimeMillis() / 1000 - 1;
     time2 = System.currentTimeMillis();
+    time3 = System.currentTimeMillis();
     size = 64;
   }
   public void setSpeed(int newSpeed) {
@@ -80,18 +95,25 @@ public class Player extends Character{
   }
   
   public void draw() {
+    int index = normal;
     if (tint == true && System.currentTimeMillis() - time2 <= 500) {
       tint(0, 153, 100, 100);
     }
     else {
       tint = false;
     }
+    if (System.currentTimeMillis() - time3 <= 250) {
+      index = 2;
+    }
+    else if (System.currentTimeMillis() - time3 <= 500) {
+      index = 3;
+    }
     pushMatrix();
     if(isMirror) {
       scale(-1,1);
-      translate(-(2*x + sprite.width),0);
+      translate(-(2*x + animation[index].width),0);
     }
-    image(sprite, x, y);
+    image(animation[index], x, y);
     popMatrix();
     noTint();
   }
