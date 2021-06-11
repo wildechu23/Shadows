@@ -80,7 +80,7 @@ public class Game {
             floor.cRoomCoords[0] -= 1;
             floor.cRoom = floor.roomArray[floor.cRoomCoords[0]][floor.cRoomCoords[1]];
             player.x = 6 * 128;
-            player.y = 11 * 128;
+            player.y = 5 * 128;
             break;
           case "down":
             floor.cRoomCoords[0] += 1;

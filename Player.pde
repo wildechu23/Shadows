@@ -61,12 +61,12 @@ public class Player extends Character{
   public void pressed(boolean w, boolean a, boolean s, boolean d) { 
     if (a) {
       dx = -1;
-      isMirror = false;
+      isMirror = true;
       //spriteNum = 0;
     }
     if (d) {
       dx = 1;
-      isMirror = true;
+      isMirror = false;
       //spriteNum = 1;
     }
     if (w) dy = -1;
