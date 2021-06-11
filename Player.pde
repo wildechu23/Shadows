@@ -9,6 +9,7 @@ public class Player extends Character{
   public boolean isAlive, isMirror;
   double time3;
   public Player() {
+    damage = 1;
     animation = new PImage[4];
     animation[0] = loadImage("ninja.png");
     animation[1] = loadImage("swordstance.png");
@@ -35,7 +36,6 @@ public class Player extends Character{
     time2 = System.currentTimeMillis();
     time3 = System.currentTimeMillis() - 300;
     size = 64;
-    damage = 1;
   }
   public void setSpeed(int newSpeed) {
     speed = newSpeed;
