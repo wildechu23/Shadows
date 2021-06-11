@@ -33,10 +33,10 @@ public class Room {
     }
     ground = loadImage("tempGround.png");
     rock = loadImage("tempRock.png");
-    upDoor = loadImage("upDoor.png");
-    leftDoor = loadImage("leftDoor.png");
-    downDoor = loadImage("downDoor.png");
-    rightDoor = loadImage("rightDoor.png");
+    upDoor = loadImage("upDoorLocked.png");
+    leftDoor = loadImage("leftDoorLocked.png");
+    downDoor = loadImage("downDoorLocked.png");
+    rightDoor = loadImage("rightDoorLocked.png");
     upWall = loadImage("upWall.png");
     leftWall = loadImage("leftWall.png");
     downWall = loadImage("downWall.png");

@@ -102,6 +102,26 @@ public class Game {
             break;
         }
       }
+      else if (floor.cRoom.enemies.size() == 0 && floor.cRoom.rocks.get(i) instanceof Door) {
+        switch (floor.cRoom.rocks.get(i).direction) {
+          case "left":
+            floor.cRoom.leftDoor = loadImage("leftDoor.png");
+            floor.cRoom.leftDoor.resize(128, 0);
+            break;
+          case "right":
+            floor.cRoom.rightDoor = loadImage("rightDoor.png");
+            floor.cRoom.rightDoor.resize(128, 0);
+            break;
+          case "up":
+            floor.cRoom.upDoor = loadImage("upDoor.png");
+            floor.cRoom.upDoor.resize(128, 0);
+            break;
+          case "down":
+            floor.cRoom.downDoor = loadImage("downDoor.png");
+            floor.cRoom.downDoor.resize(128, 0);
+            break;
+        }
+      }
     }
     for (int i = 0; i < floor.cRoom.powerups.size(); i++) {
       if (floor.cRoom.powerups.get(i).isColliding(player)[0] == 0 || floor.cRoom.powerups.get(i).isColliding(player)[1] == 0) {
