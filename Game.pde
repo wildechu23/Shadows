@@ -7,6 +7,7 @@ public class Game {
   public Player player;
   public ArrayList<Projectile> projectiles;
   private Shadows shadows;
+  private PImage button;
   
   public Game(Shadows shadows) {
     this.shadows = shadows;
@@ -16,6 +17,8 @@ public class Game {
     ui = new UI();
     player = new Player();
     projectiles = new ArrayList<Projectile>();
+    button = loadImage("pause.png");
+    button.resize(64, 0);
   }
   
   public void draw() {
@@ -30,6 +33,7 @@ public class Game {
       proj.draw();
     }
     ui.draw();
+    image(button, width - 64, 0);
   }
   
   public void update() {
