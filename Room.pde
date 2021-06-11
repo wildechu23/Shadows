@@ -156,9 +156,6 @@ public class Room {
             if (array[i][j] == 'u') rocks.add(new Door(j * 128, i * 128, "up"));
             if (array[i][j] == 'd') rocks.add(new Door(j * 128, i * 128, "down"));
           }
-          else if (array[i][j] == 'p') {
-            powerups.add(new PowerUp(j * 128, i * 128));
-          }
         }
       }
     } catch (IOException e) {

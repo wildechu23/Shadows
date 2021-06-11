@@ -43,6 +43,7 @@ public class Game {
       Projectile proj = projectiles.get(i);
       for (Rock rocks : floor.cRoom.rocks) {
         if (projectiles.size() > 0 && rocks.isColliding(proj)) {
+          
           projectiles.remove(i);
           continue;
         }
@@ -55,11 +56,13 @@ public class Game {
       //println(proj.getCharacter().getClass());
       for (Enemy enemy : floor.cRoom.enemies) {
         if ((projectiles.size() > 0 && proj.getCharacter() instanceof Player && proj.isColliding(enemy))) {
+          
           projectiles.remove(i);
           break;
         }
       }
       if (projectiles.size() > 0 && (proj.getCharacter() instanceof Enemy && proj.isColliding(player))) {
+        
         projectiles.remove(i);
         continue;
       }
@@ -100,14 +103,29 @@ public class Game {
         }
       }
     }
+    for (int i = 0; i < floor.cRoom.powerups.size(); i++) {
+      if (floor.cRoom.powerups.get(i).isColliding(player)[0] == 0 || floor.cRoom.powerups.get(i).isColliding(player)[1] == 0) {
+        if (floor.cRoom.powerups.get(i) instanceof damageUp) {
+          player.damage += 1;
+        }
+        if (floor.cRoom.powerups.get(i) instanceof speedUp) {
+          player.speed += 1;
+        }
+        if (floor.cRoom.powerups.get(i) instanceof Heart && player.hearts < 10) {
+          player.hearts += 1;
+        }
+        floor.cRoom.powerups.remove(i);
+      }
+    }
     
     for (int i = 0; i < floor.cRoom.enemies.size(); i++) {
       if (floor.cRoom.enemies.get(i).isAlive == false) {
         floor.cRoom.enemies.remove(i);
+        
         continue;
       }
       floor.cRoom.enemies.get(i).move(player, this);
-      floor.cRoom.enemies.get(i).update();
+      floor.cRoom.enemies.get(i).update(floor);
     }
     //println("Projectiles size: ", projectiles.size()); 
     

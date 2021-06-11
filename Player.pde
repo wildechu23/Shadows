@@ -1,5 +1,5 @@
 public class Player extends Character{
-  private int shields, dashCooldown, dx, dy, speed, normal;
+  private int shields, dashCooldown, dx, dy, speed, normal, damage;
   float attackCD;
   private Weapon primaryWeapon, secondaryWeapon;
   private PowerUp currentPower;
@@ -14,7 +14,7 @@ public class Player extends Character{
     animation[1] = loadImage("swordstance.png");
     animation[2] = loadImage("swordslash2.png");
     animation[3] = loadImage("swordslash3.png");
-    primaryWeapon = new Sword();
+    primaryWeapon = new Sword(this);
     secondaryWeapon = new Shurikens();
     animation[0].resize(64, 0);
     animation[1].resize(100, 0);
@@ -35,6 +35,7 @@ public class Player extends Character{
     time2 = System.currentTimeMillis();
     time3 = System.currentTimeMillis() - 300;
     size = 64;
+    damage = 1;
   }
   public void setSpeed(int newSpeed) {
     speed = newSpeed;

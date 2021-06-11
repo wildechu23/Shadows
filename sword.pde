@@ -1,13 +1,12 @@
 public class Sword extends Weapon{
   int range;
-  int damage;
-  public Sword() {
+  public Sword(Player player) {
     this.name = "Sword";
     this.projectile = null;
     this.sprite = loadImage("sword.png");
     this.sprite.resize(128,0);
     range = 120;
-    damage = 2;
+    damage = player.damage + 1;
   }
   public void attack(Game game) {
     float angle = atan2(mouseY - game.player.y, mouseX - game.player.x);
