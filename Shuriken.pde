@@ -3,6 +3,7 @@ public class Shuriken extends Projectile {
     super(player);
     sprite = loadImage("shuriken.png");
     sprite.resize(64, 0);
+    damage = player.damage;
   }
   
   public boolean isColliding(Character character) {
