@@ -7,10 +7,13 @@ void setup() {
 }
 
 void draw() {
-  if (game != null && game.isRunning) {
+  if (game != null && game.isRunning && !game.pause) {
     game.update();
     background(0);
     game.draw();
+  }
+  else if (game != null && game.pause) {
+    background(0);
   }
   else {
     game = null;

@@ -1,7 +1,7 @@
 import java.lang.reflect.*;
 
 public class Game {
-  public boolean isRunning;
+  public boolean isRunning, pause;
   private Floor floor;
   private UI ui;
   public Player player;
@@ -11,6 +11,7 @@ public class Game {
   public Game(Shadows shadows) {
     this.shadows = shadows;
     isRunning = true;
+    pause = false;
     floor = new Floor();
     ui = new UI();
     player = new Player();
