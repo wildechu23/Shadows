@@ -69,7 +69,7 @@ public class Game {
     floor.update();
     player.move(floor);
     for (int i = 0; i < floor.cRoom.rocks.size(); i++) {
-      if (floor.cRoom.rocks.get(i) instanceof Door && (floor.cRoom.rocks.get(i).isColliding(player)[0] == 0 || floor.cRoom.rocks.get(i).isColliding(player)[1] == 0)) {
+      if (floor.cRoom.enemies.size() == 0 && floor.cRoom.rocks.get(i) instanceof Door && (floor.cRoom.rocks.get(i).isColliding(player)[0] == 0 || floor.cRoom.rocks.get(i).isColliding(player)[1] == 0)) {
         switch(floor.cRoom.rocks.get(i).direction) {
           case "left":
             floor.cRoomCoords[1] -= 1;
