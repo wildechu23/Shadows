@@ -33,7 +33,6 @@ public class Floor {
   }
   
   public void update() {
-    //System.out.println("i: " + cRoomCoords[0] + " j: " + cRoomCoords[1]);
     //cRoom.update();
   }
 }
