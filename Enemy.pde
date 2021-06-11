@@ -1,7 +1,7 @@
 public abstract class Enemy extends Character{
   public int speed, attackCD;
   public ArrayList<Projectile> projectiles;
-  private PImage sprite;
+  public PImage sprite;
   boolean isAlive;
   public Enemy(String str) {
     x = 0;
