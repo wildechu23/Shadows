@@ -49,7 +49,7 @@ public class Skeleton extends Enemy {
   }
   public void attack(Player player, Game game) {
     if (System.currentTimeMillis() / 1000 - time >= attackCD) {
-      game.projectiles.add(new Shuriken(this, player));
+      game.projectiles.add(new Arrow(this, player));
       //println(game.projectiles);
       time = System.currentTimeMillis() / 1000;
       time3 = System.currentTimeMillis();
