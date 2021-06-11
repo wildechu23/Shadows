@@ -1,20 +1,24 @@
 import java.lang.reflect.*;
 
 public class Game {
-  public boolean isRunning;
+  public boolean isRunning, pause;
   private Floor floor;
   private UI ui;
   public Player player;
   public ArrayList<Projectile> projectiles;
   private Shadows shadows;
+  private PImage button;
   
   public Game(Shadows shadows) {
     this.shadows = shadows;
     isRunning = true;
+    pause = false;
     floor = new Floor();
     ui = new UI();
     player = new Player();
     projectiles = new ArrayList<Projectile>();
+    button = loadImage("pause.png");
+    button.resize(64, 0);
   }
   
   public void draw() {
@@ -29,6 +33,7 @@ public class Game {
       proj.draw();
     }
     ui.draw();
+    image(button, width - 64, 0);
   }
   
   public void update() {

@@ -15,16 +15,12 @@ public class Player extends Character{
     animation[2] = loadImage("swordslash2.png");
     animation[3] = loadImage("swordslash3.png");
     primaryWeapon = new Sword();
+    secondaryWeapon = new Shurikens();
     animation[0].resize(64, 0);
-    animation[1].resize(86, 0);
-    animation[2].resize(86, 0);
-    animation[3].resize(86, 0);
-    if (primaryWeapon instanceof Sword) {
-      normal = 1;
-    }
-    else {
-      normal = 0;
-    }
+    animation[1].resize(100, 0);
+    animation[2].resize(100, 0);
+    animation[3].resize(100, 0);
+    normal = 1;
     spriteNum = 0;
     speed = 8;
     x = 400;
@@ -71,6 +67,12 @@ public class Player extends Character{
   public void update() {
     if (hearts <= 0) {
       isAlive = false;
+    }
+    if (primaryWeapon instanceof Sword) {
+      normal = 1;
+    }
+    else {
+      normal = 0;
     }
   }
   public void pressed(boolean w, boolean a, boolean s, boolean d) { 

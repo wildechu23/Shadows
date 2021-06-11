@@ -7,8 +7,12 @@ void setup() {
 }
 
 void draw() {
-  if (game != null && game.isRunning) {
+  if (game != null && game.isRunning && !game.pause) {
     game.update();
+    background(0);
+    game.draw();
+  }
+  else if (game != null && game.pause) {
     background(0);
     game.draw();
   }
@@ -31,6 +35,11 @@ void keyPressed() {
   if (game != null)
   game.player.pressed((key == 'w' || key == 'W'), (key == 'a' || key == 'A'),
                  (key == 's' || key == 'S'), (key == 'd' || key == 'D'));
+    if (key == '1') {
+      Weapon tempWeapon = game.player.primaryWeapon;
+      game.player.primaryWeapon = game.player.secondaryWeapon;
+      game.player.secondaryWeapon = tempWeapon;
+    }
 }
 
 void keyReleased() {
@@ -40,8 +49,13 @@ void keyReleased() {
 }
 
 void mousePressed() {
-  if (game != null)
-  game.click(mouseButton == LEFT);
+  if (game != null) {
+  if (mouseX >= width - 64 && mouseX <= width && mouseY >= 0 && mouseY <= 0 + 64){
+    game.pause = !game.pause;
+  }
+  else if (game.pause == false)  
+    game.click(mouseButton == LEFT);
+  }
   else if (mouseX >= width / 2 && mouseX <= width / 2 + 100 && mouseY >= height / 2 && mouseY <= height / 2 + 100) {
     game = new Game(this);
   }
