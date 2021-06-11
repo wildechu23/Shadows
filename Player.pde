@@ -37,7 +37,7 @@ public class Player extends Character{
     attackCD = 0.5;
     time = System.currentTimeMillis() / 1000 - 1;
     time2 = System.currentTimeMillis();
-    time3 = System.currentTimeMillis();
+    time3 = System.currentTimeMillis() - 300;
     size = 64;
   }
   public void setSpeed(int newSpeed) {
@@ -102,10 +102,10 @@ public class Player extends Character{
     else {
       tint = false;
     }
-    if (System.currentTimeMillis() - time3 <= 250) {
+    if (System.currentTimeMillis() - time3 <= 150) {
       index = 2;
     }
-    else if (System.currentTimeMillis() - time3 <= 500) {
+    else if (System.currentTimeMillis() - time3 <= 300) {
       index = 3;
     }
     pushMatrix();
