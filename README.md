@@ -59,4 +59,22 @@ Open Shadows.pde and hit Run
 - Began work on Inventory of the UI(Wilde)
 
 6/10
-= Perfected collision(Joshua)
+- Perfected collision(Joshua)
+- Ninja doesn't need mirror sprite(Wilde)
+- Figuring out the sword(Joshua)
+
+6/11
+- Nearly all the sprites and animations(Wilde)
+- Skeleton shoots arrow(Joshua)
+- Coded in the animations(Joshua)
+- Added pause function(Joshua)
+- Title screen(Wilde)
+- Floors increase each time you defeat the boss(Wilde)
+- Weapon switching(Joshua)
+- Inventory UI(Wilde)
+- Randomized room generation(Joshua)
+- Made sure edges had no doors leading out of the array(Joshua)
+- Added powerups(Joshua)
+- Removed rock inheritance of PowerUp(Joshua)
+- Doors unlock after defeating all enemies(Joshua)
+- "How to play"(Wilde)
