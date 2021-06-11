@@ -37,7 +37,7 @@ public class Player extends Character{
     attackCD = 0.5;
     time = System.currentTimeMillis() / 1000 - 1;
     time2 = System.currentTimeMillis();
-    time3 = System.currentTimeMillis();
+    time3 = System.currentTimeMillis() - 500;
     size = 64;
   }
   public void setSpeed(int newSpeed) {
